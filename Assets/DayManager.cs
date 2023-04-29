@@ -16,6 +16,8 @@ public class DayManager : MonoBehaviour
 
     public List<Order> orderListForToday;
 
+    public BoxingStation boxing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,8 @@ public class DayManager : MonoBehaviour
     {
         orderListForToday = GenerateOrders(numberOfOrdersToday, minOrderSize, maxOrderSize);
         orderList.SetOrderText(orderListForToday);
+
+        boxing.todaysOrders = orderListForToday;
     }
 
     private List<Order> GenerateOrders(int orderNum, int orderSizeMin, int orderSizeMax)
