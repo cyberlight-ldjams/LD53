@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class DayManager : MonoBehaviour
@@ -27,6 +28,8 @@ public class DayManager : MonoBehaviour
 
     public TextMeshProUGUI youWin;
 
+    public GameObject opening;
+
     public GameObject player;
 
     private string scoreSymbol;
@@ -47,9 +50,9 @@ public class DayManager : MonoBehaviour
         scoreSymbol = scoreText.text;
         timeRemaining = TimePerDay;
         SetTimer();
-        working = true;
 
         StartNewDay();
+        Pause();
 
         scoreText.text = Score + scoreSymbol;
     }
@@ -77,6 +80,7 @@ public class DayManager : MonoBehaviour
     {
         orderList = GenerateOrders(numberOfOrdersToday, minOrderSize, maxOrderSize);
         UpdateOrderList();
+        working = true;
     }
 
     private void EndCurrentDay()
@@ -173,15 +177,26 @@ public class DayManager : MonoBehaviour
 
     public void YouWin()
     {
-        working = false;
+        Pause();
         youWin.gameObject.SetActive(true);
-        player.GetComponent<PlayerMovement>().enabled = false;
     }
 
     public void GameOver()
     {
-        working = false;
+        Pause();
         youLose.gameObject.SetActive(true);
+    }
+
+    public void Pause()
+    {
+        working = false;
         player.GetComponent<PlayerMovement>().enabled = false;
+    }
+
+    public void Begin()
+    {
+        opening.SetActive(false);
+        working = true;
+        player.GetComponent<PlayerMovement>().enabled = true;
     }
 }
