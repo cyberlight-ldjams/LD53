@@ -23,9 +23,17 @@ public class DayManager : MonoBehaviour
 
     public TextMeshProUGUI timer;
 
+    public TextMeshProUGUI youLose;
+
+    public TextMeshProUGUI youWin;
+
+    public GameObject player;
+
     private string scoreSymbol;
 
-    public float Score;
+    public float Score = 0f;
+
+    public float ScoreToWin = 500f;
 
     private float timeRemaining;
 
@@ -37,7 +45,6 @@ public class DayManager : MonoBehaviour
     void Start()
     {
         scoreSymbol = scoreText.text;
-        Score = 0;
         timeRemaining = TimePerDay;
         SetTimer();
         working = true;
@@ -54,6 +61,15 @@ public class DayManager : MonoBehaviour
         {
             timeRemaining -= Time.deltaTime;
             SetTimer();
+
+            if (Score >= ScoreToWin)
+            {
+                YouWin();
+            }
+            else if (timeRemaining < 0f)
+            {
+                GameOver();
+            }
         }
     }
 
@@ -123,6 +139,21 @@ public class DayManager : MonoBehaviour
 
     private void SetTimer()
     {
+        if (timeRemaining < 0f)
+        {
+            timer.text = "Time Remaining\r\n0:00";
+            timer.color = Color.red;
+        } else if (timeRemaining > 60f)
+        {
+            timer.color = Color.white;
+        } else if (timeRemaining < 20f)
+        {
+            timer.color = Color.red;
+        } else if (timeRemaining < 60f)
+        {
+            timer.color = Color.yellow;
+        }
+
         int timeSeconds = 0;
         int timeMinutes = 0;
 
@@ -138,7 +169,19 @@ public class DayManager : MonoBehaviour
             timer.text = "Time Remaining\r\n" + 
                 timeMinutes + ":" + timeSeconds;
         }
+    }
 
-        
+    public void YouWin()
+    {
+        working = false;
+        youWin.gameObject.SetActive(true);
+        player.GetComponent<PlayerMovement>().enabled = false;
+    }
+
+    public void GameOver()
+    {
+        working = false;
+        youLose.gameObject.SetActive(true);
+        player.GetComponent<PlayerMovement>().enabled = false;
     }
 }

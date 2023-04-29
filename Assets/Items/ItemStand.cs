@@ -72,10 +72,12 @@ public class ItemStand : MonoBehaviour
         poofer.Play();
     }
 
-    public void TakeItem()
+    public Item TakeItem()
     {
         itemOnStand.GetComponent<MeshRenderer>().enabled = false;
         itemTaken = true;
         timeSinceTaken = 0f;
+
+        return item;
     }
 }

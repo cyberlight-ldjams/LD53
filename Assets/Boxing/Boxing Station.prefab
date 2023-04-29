@@ -14,11 +14,12 @@ GameObject:
   - component: {fileID: 6094542549502719152}
   - component: {fileID: 6094542549502719167}
   - component: {fileID: 1802686597207814648}
+  - component: {fileID: 4481718976411847461}
   m_Layer: 0
   m_Name: Boxing Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6094542549502719155
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719f3419b5e11cd4bb15de0cda47a708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dm: {fileID: 0}
   itemsAtStation: []
   automagic: 1
 --- !u!65 &1802686597207814648
@@ -126,3 +128,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &4481718976411847461
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094542549502719166}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
