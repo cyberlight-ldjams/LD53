@@ -35,16 +35,6 @@
         "com.unity.testtools.codecoverage": "1.2.2"
       }
     },
-    "com.unity.film-internal-utilities": {
-      "version": "0.17.0-preview",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.uielements": "1.0.0",
-        "com.unity.timeline": "1.2.18"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.ide.rider": {
       "version": "3.0.18",
       "depth": 0,
@@ -70,29 +60,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.meshsync": {
-      "version": "0.17.1-preview",
+    "com.unity.inputsystem": {
+      "version": "1.5.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.film-internal-utilities": "0.17.0-preview",
-        "com.unity.editorcoroutines": "1.0.0",
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.animation": "1.0.0",
-        "com.unity.modules.cloth": "1.0.0",
-        "com.unity.modules.director": "1.0.0",
-        "com.unity.modules.particlesystem": "1.0.0",
-        "com.unity.modules.screencapture": "1.0.0",
-        "com.unity.sharp-zip-lib": "1.3.2-preview",
-        "com.unity.timeline": "1.2.18"
+        "com.unity.modules.uielements": "1.0.0"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.meshsync.dcc-plugins": {
-      "version": "0.17.0-preview",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.performance.profile-analyzer": {
@@ -105,13 +79,6 @@
     "com.unity.settings-manager": {
       "version": "1.0.3",
       "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.sharp-zip-lib": {
-      "version": "1.3.2-preview",
-      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
