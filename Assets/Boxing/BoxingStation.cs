@@ -22,6 +22,21 @@ public class BoxingStation : MonoBehaviour
         return null;
     }
 
+    public Item RemoveItemFromStation(Item item)
+    {
+        foreach (Item i in itemsAtStation)
+        {
+            if (i.itemName.Equals(item.itemName))
+            {
+                itemsAtStation.Remove(i);
+
+                return i;
+            }
+        }
+
+        return null;
+    }
+
     public Box BoxOrder()
     {
         Order completed = CheckAgainstAllOrders();
