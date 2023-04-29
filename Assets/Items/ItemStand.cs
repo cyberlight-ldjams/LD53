@@ -35,8 +35,6 @@ public class ItemStand : MonoBehaviour
 
     void Start()
     {
-        
-
         if (itemModel != null)
         {
             Transform t = this.gameObject.transform;
@@ -48,8 +46,6 @@ public class ItemStand : MonoBehaviour
                 (1f/t.localScale.y) * itemModel.transform.localScale.y * scaleCorrection.y, 
                 (1f/t.localScale.z) * itemModel.transform.localScale.z * scaleCorrection.z);
         }
-
-        TakeItem();
     }
 
     void Update()

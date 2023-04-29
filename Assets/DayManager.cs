@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DayManager : MonoBehaviour
@@ -12,30 +13,50 @@ public class DayManager : MonoBehaviour
 
     public int numberOfOrdersToday = 5;
 
-    public OrderList orderList;
+    public OrderList orderListUI;
 
-    public List<Order> orderListForToday;
+    public List<Order> orderList;
 
-    public BoxingStation boxing;
+    public TextMeshProUGUI scoreText;
+
+    private string scoreSymbol;
+
+    public float Score;
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreSymbol = scoreText.text;
+        Score = 0;
+
         StartNewDay();
+
+        scoreText.text = Score + scoreSymbol;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void StartNewDay()
+    private void StartNewDay()
     {
-        orderListForToday = GenerateOrders(numberOfOrdersToday, minOrderSize, maxOrderSize);
-        orderList.SetOrderText(orderListForToday);
+        orderList = GenerateOrders(numberOfOrdersToday, minOrderSize, maxOrderSize);
+        UpdateOrderList();
+    }
 
-        boxing.todaysOrders = orderListForToday;
+    private void EndCurrentDay()
+    {
+        // Remove the previous orders
+        float dailyTotal = 0;
+        foreach (Order o in orderList)
+        {
+            dailyTotal += o.GetOrderValue();
+            orderList.Remove(o);
+        }
+
+        UpdateOrderList();
     }
 
     private List<Order> GenerateOrders(int orderNum, int orderSizeMin, int orderSizeMax)
@@ -49,5 +70,37 @@ public class DayManager : MonoBehaviour
         }
 
         return orders;
+    }
+
+    // Returns whether or not the day is complete
+    public bool UpdateOrderList()
+    {
+        orderListUI.SetOrderText(orderList);
+
+        scoreText.text = Score + scoreSymbol;
+
+        foreach (Order o in orderList)
+        {
+            if (o.Completed == false)
+            {
+                return false;
+            }
+        }
+
+        // If we made it here, all orders are completed
+        EndCurrentDay();
+
+        return true;
+    }
+
+    public Order CompleteOrder(Order order)
+    {
+        order.MarkCompleted();
+
+        Score += order.GetOrderValue();
+
+        UpdateOrderList();
+
+        return order;
     }
 }
