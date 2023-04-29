@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
+    public float TimePerDay = 120f;
+    
     public List<Item> possibleItems;
 
     public int minOrderSize = 1;
@@ -19,15 +21,26 @@ public class DayManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
 
+    public TextMeshProUGUI timer;
+
     private string scoreSymbol;
 
     public float Score;
+
+    private float timeRemaining;
+
+    // Whether or not the player is working
+    // Or if we're between days
+    private bool working;
 
     // Start is called before the first frame update
     void Start()
     {
         scoreSymbol = scoreText.text;
         Score = 0;
+        timeRemaining = TimePerDay;
+        SetTimer();
+        working = true;
 
         StartNewDay();
 
@@ -37,7 +50,11 @@ public class DayManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (working)
+        {
+            timeRemaining -= Time.deltaTime;
+            SetTimer();
+        }
     }
 
     private void StartNewDay()
@@ -102,5 +119,26 @@ public class DayManager : MonoBehaviour
         UpdateOrderList();
 
         return order;
+    }
+
+    private void SetTimer()
+    {
+        int timeSeconds = 0;
+        int timeMinutes = 0;
+
+        timeMinutes = (int) timeRemaining / 60;
+        timeSeconds = (int) timeRemaining % 60;
+
+        if (timeSeconds < 10)
+        {
+            timer.text = "Time Remaining\r\n" + 
+                timeMinutes + ":0" + timeSeconds;
+        } else
+        {
+            timer.text = "Time Remaining\r\n" + 
+                timeMinutes + ":" + timeSeconds;
+        }
+
+        
     }
 }
