@@ -80,4 +80,9 @@ public class ItemStand : MonoBehaviour
 
         return item;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Testing 1, 2, 3");
+    }
 }

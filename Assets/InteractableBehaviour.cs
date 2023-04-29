@@ -22,7 +22,6 @@ public abstract class InteractableBehaviour : MonoBehaviour
     {
         Debug.Log(other.name);
 
-
         if (other.CompareTag("Player"))
         {
             ShowInteractions();
@@ -41,8 +40,6 @@ public abstract class InteractableBehaviour : MonoBehaviour
             other.gameObject.GetComponent<PlayerMovement>().SetCurrentInteractable(null);
         }
     }
-
-    
 
     public abstract void PrimaryAction();
 

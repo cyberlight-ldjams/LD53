@@ -59,7 +59,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 lookDir = _movement;
         if(lookDir != Vector3.zero)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDir), smoothedLerpTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, 
+                Quaternion.LookRotation(lookDir), smoothedLerpTime);
         }
 
         lerpTime += Time.deltaTime;
