@@ -30,40 +30,58 @@ public class OrderList : MonoBehaviour
             // If we're a multiple of 3, build column 1
             if (i % 3 == 0)
             {
-                col1 += "--- Order " + (i + 1) + " ---\r\n";
-                for (int j = 0; j < orders[i].GetOrderItemCount(); j++)
+                if (!orders[i].Completed)
                 {
-                    string itemName = orders[i].GetOrderItem(j).itemName;
-                    col1 += itemName + "\r\n";
-                }
+                    col1 += "--- Order " + (i + 1) + " ---\r\n";
+                    for (int j = 0; j < orders[i].GetOrderItemCount(); j++)
+                    {
+                        string itemName = orders[i].GetOrderItem(j).itemName;
+                        col1 += itemName + "\r\n";
+                    }
 
-                col1 += "\r\n";
+                    col1 += "\r\n";
+                } else
+                {
+                    col1 += "\r\n\r\n\r\n";
+                }
             }
 
             // If we're a multiple of 3 less 1, build column 2
             else if (i % 3 == 1)
             {
-                col2 += "--- Order " + (i + 1) + " ---\r\n";
-                for (int j = 0; j < orders[i].GetOrderItemCount(); j++)
+                if (!orders[i].Completed)
                 {
-                    string itemName = orders[i].GetOrderItem(j).itemName;
-                    col2 += itemName + "\r\n";
-                }
+                    col2 += "--- Order " + (i + 1) + " ---\r\n";
+                    for (int j = 0; j < orders[i].GetOrderItemCount(); j++)
+                    {
+                        string itemName = orders[i].GetOrderItem(j).itemName;
+                        col2 += itemName + "\r\n";
+                    }
 
-                col2 += "\r\n";
+                    col2 += "\r\n";
+                } else
+                {
+                    col2 += "\r\n\r\n\r\n";
+                }
             }
 
             // If we're a multiple of 3 less 2, build column 3
             if (i % 3 == 2)
             {
-                col3 += "--- Order " + (i + 1) + " ---\r\n";
-                for (int j = 0; j < orders[i].GetOrderItemCount(); j++)
+                if (!orders[i].Completed)
                 {
-                    string itemName = orders[i].GetOrderItem(j).itemName;
-                    col3 += itemName + "\r\n";
-                }
+                    col3 += "--- Order " + (i + 1) + " ---\r\n";
+                    for (int j = 0; j < orders[i].GetOrderItemCount(); j++)
+                    {
+                        string itemName = orders[i].GetOrderItem(j).itemName;
+                        col3 += itemName + "\r\n";
+                    }
 
-                col3 += "\r\n";
+                    col3 += "\r\n";
+                } else
+                {
+                    col3 += "\r\n\r\n\r\n";
+                }
             }
         }
 

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Order
 {
     private List<Item> possibleItems;
 
-    private List<Item> orderItems;
+    public List<Item> orderItems { get; private set; }
+
+    public bool Completed { get; private set; }
 
     public Order(List<Item> possibleItems, int orderSize)
     {
@@ -75,5 +78,21 @@ public class Order
         }
 
         return true;
+    }
+
+    public Order MarkCompleted()
+    {
+        Completed = true;
+        return this;
+    }
+
+    public float GetOrderValue()
+    {
+        float value = 0;
+        foreach (Item i in orderItems)
+        {
+            value += i.value;
+        }
+        return value;
     }
 }
