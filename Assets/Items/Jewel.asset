@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Jewel
   m_EditorClassIdentifier: 
   itemName: Jewel
-  description: 
-  model: {fileID: 0}
-  value: 0
+  description: A rare-ish gemstone
+  model: {fileID: 1872395529445322450, guid: 14315cb9d69200b4580578df1da15b82, type: 3}
+  value: 50
