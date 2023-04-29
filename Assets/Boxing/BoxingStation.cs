@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxingStation : MonoBehaviour
+public class BoxingStation : InteractableBehaviour
 {
     public DayManager dm;
 
@@ -71,5 +71,15 @@ public class BoxingStation : MonoBehaviour
         }
 
         return null;
+    }
+
+    public override void PrimaryAction()
+    {
+        Debug.Log("Box the item, Krunk!");
+    }
+
+    public override void SecondaryAction()
+    {
+        throw new System.NotImplementedException();
     }
 }

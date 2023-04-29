@@ -13,9 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private float smoothing = 0.25f;
 
     [SerializeField]
-    private PlayerInput playerInput;
-
-    [SerializeField]
     private float targetLerpSpeed = 1f;
 
     private NavMeshAgent agent;
@@ -24,18 +21,27 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _movement, _lastDirection, _targetDirection;
     private float lerpTime = 0f;
 
+    private PlayerInput controls;
+    private InputAction primary, secondary;
+
+    private InteractableBehaviour currentInteractable = null;
+
 
     //This is triggered automatically by the PlayerInput component when the Move action occurs.
     void OnMove(InputValue inputValue) { 
         Vector2 input = inputValue.Get<Vector2>();
         _movement = new Vector3(input.x, 0, input.y);
-        Debug.Log(input);
 
     }
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        controls = GetComponent<PlayerInput>();
+        primary = controls.actions.FindAction("PrimaryAction");
+        secondary = controls.actions.FindAction("SecondaryAction");
+        SetCurrentInteractable(null);
+
     }
 
     void Update()
@@ -57,5 +63,32 @@ public class PlayerMovement : MonoBehaviour
         }
 
         lerpTime += Time.deltaTime;
+    }
+
+
+    public void SetCurrentInteractable(InteractableBehaviour current)
+    {
+        currentInteractable = current;
+        if(currentInteractable != null)
+        {
+            primary.Enable();
+            secondary.Enable();
+        } else
+        {
+            primary.Disable();
+            secondary.Disable();
+        }
+    }
+
+   
+
+    private void OnPrimaryAction(InputValue input)
+    {
+        currentInteractable.PrimaryAction();
+    }
+
+    private void OnSecondaryAction(InputValue input)
+    {
+        currentInteractable.SecondaryAction();
     }
 }
