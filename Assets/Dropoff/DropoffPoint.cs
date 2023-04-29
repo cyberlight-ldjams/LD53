@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class DropoffPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public DayManager dm;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

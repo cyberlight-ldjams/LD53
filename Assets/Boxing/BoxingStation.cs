@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxingStation : MonoBehaviour
 {
-    public List<Order> todaysOrders;
+    public DayManager dm;
 
     public List<Item> itemsAtStation;
 
@@ -45,7 +45,7 @@ public class BoxingStation : MonoBehaviour
     // Correctly correspond to any order
     public Order CheckAgainstAllOrders()
     {
-        foreach (Order o in todaysOrders)
+        foreach (Order o in dm.orderList)
         {
             bool check = o.CheckAgainstOrder(itemsAtStation);
 
