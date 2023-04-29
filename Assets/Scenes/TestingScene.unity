@@ -779,7 +779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &997648366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6094542549502719167, guid: abdf1b63de83ad0419c5d61291014c8e, type: 3}
   m_PrefabInstance: {fileID: 6094542550495283944}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2077524391}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 719f3419b5e11cd4bb15de0cda47a708, type: 3}
@@ -1240,6 +1240,24 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2077524391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6094542549502719166, guid: abdf1b63de83ad0419c5d61291014c8e, type: 3}
+  m_PrefabInstance: {fileID: 6094542550495283944}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2077524396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077524391}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1398576616805103134
 PrefabInstance:
   m_ObjectHideFlags: 0
