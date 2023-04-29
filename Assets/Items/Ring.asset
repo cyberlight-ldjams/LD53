@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ca150548419f14c8df0105be03e52a, type: 3}
   m_Name: Ring
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Ring
   description: 
   model: {fileID: 0}
   value: 0
