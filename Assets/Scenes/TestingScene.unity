@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28412e68d9558eb4f8f4f6c6bba5f1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimePerDay: 5
+  TimePerDay: 120
   possibleItems:
   - {fileID: 11400000, guid: 5307359f665b76c48927aec8e88b2082, type: 2}
   - {fileID: 11400000, guid: 7acde452eb04e6246af07a9b58205bf6, type: 2}
