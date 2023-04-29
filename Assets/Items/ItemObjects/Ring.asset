@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1ca150548419f14c8df0105be03e52a, type: 3}
-  m_Name: Flask
+  m_Name: Ring
   m_EditorClassIdentifier: 
-  itemName: Flask
-  description: 
-  model: {fileID: 0}
-  value: 0
+  itemName: Ring
+  description: Will you be my purchaser?
+  model: {fileID: 6711962348658514099, guid: e5061a7c451bb8a4b97a8029b7721ad8, type: 3}
+  value: 30

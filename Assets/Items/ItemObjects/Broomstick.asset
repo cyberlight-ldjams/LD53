@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1ca150548419f14c8df0105be03e52a, type: 3}
-  m_Name: Orb
+  m_Name: Broomstick
   m_EditorClassIdentifier: 
-  itemName: Orb
-  description: 
-  model: {fileID: 0}
-  value: 0
+  itemName: Broomstick
+  description: Ye Good Ole Cumulus 5000
+  model: {fileID: 8648129165191358507, guid: ecda2eff55d2c964fb4dd773221faa3e, type: 3}
+  value: 5

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1ca150548419f14c8df0105be03e52a, type: 3}
-  m_Name: Broomstick
+  m_Name: Jewel
   m_EditorClassIdentifier: 
-  itemName: Broomstick
-  description: 
-  model: {fileID: 0}
-  value: 0
+  itemName: Jewel
+  description: A rare-ish gemstone
+  model: {fileID: 1872395529445322450, guid: 14315cb9d69200b4580578df1da15b82, type: 3}
+  value: 50

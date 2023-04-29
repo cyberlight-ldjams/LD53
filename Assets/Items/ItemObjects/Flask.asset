@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1ca150548419f14c8df0105be03e52a, type: 3}
-  m_Name: Ring
+  m_Name: Flask
   m_EditorClassIdentifier: 
-  itemName: Ring
-  description: 
-  model: {fileID: 0}
-  value: 0
+  itemName: Flask
+  description: For storing potions, or whatever they put in these
+  model: {fileID: 3273200596772416070, guid: 67af33b2504fd534387c7a0e00afdde2, type: 3}
+  value: 1
