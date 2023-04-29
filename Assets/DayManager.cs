@@ -12,10 +12,14 @@ public class DayManager : MonoBehaviour
 
     public int numberOfOrdersToday = 5;
 
+    public OrderList orderList;
+
+    public List<Order> orderListForToday;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartNewDay();
     }
 
     // Update is called once per frame
@@ -26,7 +30,8 @@ public class DayManager : MonoBehaviour
 
     void StartNewDay()
     {
-        GenerateOrders(numberOfOrdersToday, minOrderSize, maxOrderSize);
+        orderListForToday = GenerateOrders(numberOfOrdersToday, minOrderSize, maxOrderSize);
+        orderList.SetOrderText(orderListForToday);
     }
 
     private List<Order> GenerateOrders(int orderNum, int orderSizeMin, int orderSizeMax)

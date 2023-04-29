@@ -9,11 +9,11 @@ public class Order
 
     private List<Item> orderItems;
 
-    public Order(List<Item> possibleItems, float orderSize)
+    public Order(List<Item> possibleItems, int orderSize)
     {
         this.possibleItems = possibleItems;
 
-        orderItems = new List<Item>(orderItems);
+        orderItems = new List<Item>(orderSize);
 
         for (int i = 0; i < orderSize; i++)
         {
@@ -25,6 +25,22 @@ public class Order
     public void AddOrderItem(Item item)
     {
         orderItems.Add(item);
+    }
+
+    public int GetOrderItemCount()
+    {
+        return orderItems.Count;
+    }
+
+    public Item GetOrderItem(int item)
+    {
+        if (item < orderItems.Count)
+        {
+            return orderItems[item];
+        } else
+        {
+            return null;
+        }
     }
 
     public bool CheckAgainstOrder(List<Item> items)
