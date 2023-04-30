@@ -58,8 +58,6 @@ public class PlayerAnimation : MonoBehaviour
     { 
         float vel = GetPlayerSpeed();
 
-        Debug.Log(vel);
-
         if (pickUp)
         {
             anim.SetBool("Idle", false);

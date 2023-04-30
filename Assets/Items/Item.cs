@@ -37,7 +37,6 @@ public class Item : ScriptableObject
             Quaternion.identity, parent);
         Vector3 localPosition = new Vector3(0f + positionCorrection.x,
             1.5f + positionCorrection.y, 0f + positionCorrection.z);
-        Debug.Log("LocPos: " + localPosition);
         scaledItem.transform.localPosition = localPosition;
         scaledItem.transform.localScale = AutoRescale(parent);
 

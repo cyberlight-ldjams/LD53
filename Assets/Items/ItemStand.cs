@@ -94,13 +94,15 @@ public class ItemStand : InteractableBehaviour
         // Do nothing
     }
 
-    private void OnTriggerEnter(Collider other)
+    private new void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
         PopupManager.Instance.ShowPopup(item);
     }
 
-    private void OnTriggerExit(Collider other)
+    private new void OnTriggerExit(Collider other)
     {
+        base.OnTriggerExit(other);
         PopupManager.Instance.HidePopup();
     }
 }
