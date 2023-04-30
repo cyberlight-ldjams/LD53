@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ca150548419f14c8df0105be03e52a, type: 3}
   m_Name: Crown Gem
   m_EditorClassIdentifier: 
-  itemName: Crowmed Gem
+  itemName: Crowned Gem
   description: Valuable and beautiful - be careful with it!
   model: {fileID: 7579252140208989567, guid: a4488e4ba42f6f04cb81a29c51032c30, type: 3}
-  value: 75
+  value: 67
+  Icon: {fileID: 2800000, guid: 900746f2fef522547834ebfcaa26cdc7, type: 3}
   scaleCorrection: {x: 1, y: 1, z: 1}
