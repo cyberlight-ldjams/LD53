@@ -11,7 +11,7 @@ public class DropoffPoint : InteractableBehaviour
     {
         foreach (Order o in dm.orderList)
         {
-            if (o.CheckAgainstOrder(box.Items))
+            if (!o.Completed && o.CheckAgainstOrder(box.Items))
             {
                 return dm.CompleteOrder(o);
             }

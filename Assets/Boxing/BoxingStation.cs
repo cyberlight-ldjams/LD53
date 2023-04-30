@@ -102,11 +102,14 @@ public class BoxingStation : InteractableBehaviour
     {
         foreach (Order o in dm.orderList)
         {
-            bool check = o.CheckAgainstOrder(itemsAtStation);
-
-            if (check == true)
+            if (!o.Completed)
             {
-                return o;
+                bool check = o.CheckAgainstOrder(itemsAtStation);
+
+                if (check == true)
+                {
+                    return o;
+                }
             }
         }
 
