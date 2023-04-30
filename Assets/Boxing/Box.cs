@@ -1,33 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Box
+public class Box : Holdable
 { 
     public List<Item> Items { get; private set; }
 
     public Order ForOrder { get; private set; }
 
-    public int Size;
-
     public Box(Order order)
     {
-        Items = new List<Item>();
-        ForOrder = order;
-        Size = 1;
+        Init(order, new List<Item>(), 1);
     }
 
     public Box(Order order, List<Item> items)
     {
-        this.Items = items;
-        ForOrder = order;
-        Size = 1;
+        Init(order, items, 1);
     }
 
     public Box(Order order, List<Item> items, int size)
     {
+        
+        Init(order, items, size);
+    }
+
+    public void Init(Order order, List<Item> items, int size)
+    {
+
         this.Items = items;
         ForOrder = order;
         this.Size = size;
+        box = true;
     }
 
     public bool AddItem(Item item)
