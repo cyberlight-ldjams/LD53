@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEditor.Progress;
 
 [CreateAssetMenu(menuName = "New Item")]
@@ -14,6 +15,8 @@ public class Item : ScriptableObject
     public GameObject model;
 
     public float value;
+
+    public Texture2D Icon;
 
     public Vector3 scaleCorrection = Vector3.one;
 
