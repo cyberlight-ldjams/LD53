@@ -5,6 +5,8 @@ using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent (typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -63,6 +65,9 @@ public class PlayerMovement : MonoBehaviour
         primary = controls.actions.FindAction("PrimaryAction");
         secondary = controls.actions.FindAction("SecondaryAction");
         SetCurrentInteractable(null);
+        
+        //Shouldn't ever actually have to do this, but in case it disappears again...
+        GetComponent<Rigidbody>().freezeRotation = true;
     }
 
     void Update()
