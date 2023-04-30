@@ -1352,7 +1352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585263, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: positionCorrection.y
-      value: -1.05
+      value: -1.02
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585263, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: positionCorrection.z
