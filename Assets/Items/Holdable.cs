@@ -12,6 +12,8 @@ public class Holdable
 
     protected bool box = false;
 
+    public GameObject heldModel = null;
+
     //
     public bool IsBox()
     {

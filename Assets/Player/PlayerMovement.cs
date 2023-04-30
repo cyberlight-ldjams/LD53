@@ -116,7 +116,11 @@ public class PlayerMovement : MonoBehaviour
             }
         } else if (CanHoldItem())
         {
+            item.heldModel = Instantiate(item.ItemReference.model, transform);
+            item.heldModel.transform.localPosition = new Vector3(0, 0, 0.5f);
             heldItems.Add(item);
+
+
         } // else, do nothing
     }
 
@@ -132,18 +136,21 @@ public class PlayerMovement : MonoBehaviour
             return null;
         }
 
+        Holdable held = heldItems[heldItems.Count - 1];
+
         // Return the first item in hand
-        for (int i = 0; i < heldItems.Count; )
+        
+        if (held.IsBox())
         {
-            if (heldItems[i].IsBox())
-            {
-                holdingBox = false;
-            }
-            Holdable held = heldItems[i];
-            heldItems.Remove(heldItems[i]);
-            Debug.Log(held.ItemReference.itemName);
-            return held;
+            holdingBox = false;
         }
+        heldItems.Remove(heldItems[heldItems.Count - 1]);
+
+        //TODO: Object pooling?
+        Destroy(held.heldModel);
+
+        return held;
+        
 
         // Else, we have no items
         return null;
