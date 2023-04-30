@@ -122,6 +122,7 @@ public class BoxingStation : InteractableBehaviour
         {
             player.HoldItem(boxedBox);
             boxModel.SetActive(false);
+            boxedBox = null;
         }
     }
 
