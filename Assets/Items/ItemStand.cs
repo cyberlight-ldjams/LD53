@@ -38,9 +38,12 @@ public class ItemStand : InteractableBehaviour
         if (item.model != null)
         {
             Transform t = this.gameObject.transform;
-            itemOnStand = Instantiate(item.model,
-                new Vector3(0f + positionCorrection.x, 1.5f + positionCorrection.y, 0f + positionCorrection.z),
+            itemOnStand = Instantiate(item.model Vector3.zero,
                 Quaternion.identity, t);
+            Vector3 localPosition = new Vector3(0f + positionCorrection.x,
+                1.5f + positionCorrection.y, 0f + positionCorrection.z);
+            Debug.Log("LocPos: " + localPosition);
+            itemOnStand.transform.localPosition = localPosition;
             itemOnStand.transform.localScale = new Vector3(
                 (1f / t.localScale.x) * item.model.transform.localScale.x * scaleCorrection.x,
                 (1f / t.localScale.y) * item.model.transform.localScale.y * scaleCorrection.y,

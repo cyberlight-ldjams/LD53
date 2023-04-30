@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     public bool holdingBox { get; private set; } = false;
 
+    [SerializeField]
+    private GameObject orderList;
+
     private NavMeshAgent agent;
 
     private Vector3 _movement, _lastDirection, _targetDirection;
@@ -189,5 +192,13 @@ public class PlayerMovement : MonoBehaviour
     private void OnSecondaryAction(InputValue input)
     {
         currentInteractable.SecondaryAction(this);
+    }
+
+    private void OnToggleOrders(InputValue input)
+    {
+        if (orderList != null)
+        {
+            orderList.SetActive(!orderList.activeSelf);
+        }
     }
 }
