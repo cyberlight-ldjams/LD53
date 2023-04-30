@@ -12,11 +12,11 @@ public class DayManager : MonoBehaviour
 
     public int minOrderSize = 1;
 
-    public int maxOrderSize = 2;
+    public int maxOrderSize = 1;
 
     public int addToOrderSizePerDay = 1;
 
-    public int maxOrderSizeEver = 7;
+    public int maxOrderSizeEver = 5;
 
     public int numberOfOrdersToday = 3;
 
@@ -105,12 +105,23 @@ public class DayManager : MonoBehaviour
     {
         // Remove the previous orders
         float dailyTotal = 0;
+        int totalItemsToday = 0;
         foreach (Order o in orderList)
         {
             dailyTotal += o.GetOrderValue();
+            totalItemsToday += o.orderItems.Count;
         }
-
         orderList.Clear();
+
+        Pause();
+
+        string nextDayString = "\tAll of the orders for the day have been fullfilled! " +
+            "You can now take a breath. Be sure to come back tomorrow to keep working, " +
+            "you still need to earn " + (ScoreToWin - Score) + scoreSymbol + " in order " +
+            "to pay off your debt.\r\n\tToday you completed " + numberOfOrdersToday + " orders, " +
+            "boxing up " + totalItemsToday + " items and earned " + dailyTotal + scoreSymbol;
+        nextDayText.text = nextDayString;
+        nextDayDialogue.SetActive(true);
 
         // The player is too good! Make it more difficult
         maxOrderSize += addToOrderSizePerDay;
@@ -120,8 +131,6 @@ public class DayManager : MonoBehaviour
         {
             maxOrderSize = maxOrderSizeEver;
         }
-
-        StartNewDay();
     }
 
     private List<Order> GenerateOrders(int orderNum, int orderSizeMin, int orderSizeMax)
@@ -233,5 +242,6 @@ public class DayManager : MonoBehaviour
         nextDayDialogue.SetActive(false);
         working = true;
         player.GetComponent<PlayerMovement>().enabled = true;
+        StartNewDay();
     }
 }
