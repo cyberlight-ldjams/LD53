@@ -150,10 +150,6 @@ public class PlayerMovement : MonoBehaviour
         Destroy(held.heldModel);
 
         return held;
-        
-
-        // Else, we have no items
-        return null;
     }
 
     public Item ReleaseItem(Item item)
