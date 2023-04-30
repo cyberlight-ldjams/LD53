@@ -38,7 +38,7 @@ public class ItemStand : InteractableBehaviour
         if (item.model != null)
         {
             Transform t = this.gameObject.transform;
-            itemOnStand = Instantiate(item.model Vector3.zero,
+            itemOnStand = Instantiate(item.model, Vector3.zero,
                 Quaternion.identity, t);
             Vector3 localPosition = new Vector3(0f + positionCorrection.x,
                 1.5f + positionCorrection.y, 0f + positionCorrection.z);
