@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1ca150548419f14c8df0105be03e52a, type: 3}
-  m_Name: Ruby
+  m_Name: Crown Gem
   m_EditorClassIdentifier: 
-  itemName: Ruby
-  description: A rarer gemstone
-  model: {fileID: 9113403063161636692, guid: c913caa3bc87749429359497f231a6c9, type: 3}
-  value: 50
+  itemName: Crowmed Gem
+  description: Valuable and beautiful - be careful with it!
+  model: {fileID: 7579252140208989567, guid: a4488e4ba42f6f04cb81a29c51032c30, type: 3}
+  value: 75

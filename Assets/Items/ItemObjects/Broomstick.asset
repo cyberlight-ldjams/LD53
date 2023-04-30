@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Broomstick
   description: Ye Good Ole Cumulus 5000
   model: {fileID: 8648129165191358507, guid: ecda2eff55d2c964fb4dd773221faa3e, type: 3}
-  value: 5
+  value: 15

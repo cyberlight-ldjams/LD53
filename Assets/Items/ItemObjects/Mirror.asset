@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Magic Mirror
   description: Mirror Mirror in my Hand, Who's the Greatest in the Land?
   model: {fileID: 3223590330074414080, guid: a1c55722428fc3b4c89c2ebb61585ebb, type: 3}
-  value: 0
+  value: 20
