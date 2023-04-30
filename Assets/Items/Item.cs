@@ -17,6 +17,17 @@ public class Item : ScriptableObject
 
     public Vector3 scaleCorrection = Vector3.one;
 
+    public Vector3 AutoRescale(Transform parent)
+    {
+        return new Vector3(
+            (1f / parent.lossyScale.x) * model.transform.localScale.x * scaleCorrection
+    .x,
+            (1f / parent.lossyScale.y) * model.transform.localScale.y * scaleCorrection
+    .y,
+            (1f / parent.lossyScale.z) * model.transform.localScale.z * scaleCorrection
+    .z);
+    }
+
     public GameObject Rescale(Transform parent, Vector3 positionCorrection) 
     {
         GameObject scaledItem = Instantiate(model, Vector3.zero,
@@ -25,13 +36,7 @@ public class Item : ScriptableObject
             1.5f + positionCorrection.y, 0f + positionCorrection.z);
         Debug.Log("LocPos: " + localPosition);
         scaledItem.transform.localPosition = localPosition;
-        scaledItem.transform.localScale = new Vector3(
-            (1f / parent.localScale.x) * model.transform.localScale.x * scaleCorrection
-    .x,
-            (1f / parent.localScale.y) * model.transform.localScale.y * scaleCorrection
-    .y,
-            (1f / parent.localScale.z) * model.transform.localScale.z * scaleCorrection
-    .z);
+        scaledItem.transform.localScale = AutoRescale(parent);
 
         return scaledItem;
     }

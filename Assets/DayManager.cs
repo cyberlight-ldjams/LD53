@@ -12,7 +12,7 @@ public class DayManager : MonoBehaviour
 
     public int minOrderSize = 1;
 
-    public int maxOrderSize = 3;
+    public int maxOrderSize = 5;
 
     public int numberOfOrdersToday = 5;
 
@@ -85,7 +85,7 @@ public class DayManager : MonoBehaviour
 
     private void StartNewDay()
     {
-        orderList = GenerateOrders(numberOfOrdersToday, minOrderSize, maxOrderSize);
+        orderList = GenerateOrders(numberOfOrdersToday, minOrderSize, maxOrderSize + 1);
         UpdateOrderList();
         timeRemaining = TimePerDay;
         working = true;
