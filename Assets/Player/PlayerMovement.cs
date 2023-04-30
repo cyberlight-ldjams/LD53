@@ -124,14 +124,7 @@ public class PlayerMovement : MonoBehaviour
             }
         } else if (CanHoldItem())
         {
-            item.heldModel = Instantiate(item.ItemReference.model, transform);
-            
-            // Correct item scale
-            item.heldModel.transform.localScale =
-                new Vector3(1f / transform.localScale.x 
-                * item.ItemReference.scaleCorrection.x,
-                1f / transform.localScale.y * item.ItemReference.scaleCorrection.y,
-                1f / transform.localScale.z * item.ItemReference.scaleCorrection.z);
+            item.heldModel = item.ItemReference.Rescale(transform, Vector3.forward * 0.5f);
             heldItems.Add(item);
 
 
