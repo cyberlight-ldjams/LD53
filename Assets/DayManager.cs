@@ -12,9 +12,15 @@ public class DayManager : MonoBehaviour
 
     public int minOrderSize = 1;
 
-    public int maxOrderSize = 5;
+    public int maxOrderSize = 2;
 
-    public int numberOfOrdersToday = 5;
+    public int addToOrderSizePerDay = 1;
+
+    public int maxOrderSizeEver = 7;
+
+    public int numberOfOrdersToday = 3;
+
+    public int addOrdersPerDay = 1;
 
     public OrderList orderListUI;
 
@@ -29,6 +35,10 @@ public class DayManager : MonoBehaviour
     public TextMeshProUGUI youWin;
 
     public GameObject opening;
+
+    public GameObject nextDayDialogue;
+
+    public TextMeshProUGUI nextDayText;
 
     public GameObject player;
 
@@ -54,7 +64,7 @@ public class DayManager : MonoBehaviour
         StartNewDay();
         Pause();
 
-        scoreText.text = Score + scoreSymbol;
+        scoreText.text = Score + scoreSymbol + " Earned";
 
         //Just so we can hide this by default
         if(!opening.activeInHierarchy)
@@ -102,6 +112,15 @@ public class DayManager : MonoBehaviour
 
         orderList.Clear();
 
+        // The player is too good! Make it more difficult
+        maxOrderSize += addToOrderSizePerDay;
+        numberOfOrdersToday += addOrdersPerDay;
+
+        if (maxOrderSize > maxOrderSizeEver)
+        {
+            maxOrderSize = maxOrderSizeEver;
+        }
+
         StartNewDay();
     }
 
@@ -123,7 +142,7 @@ public class DayManager : MonoBehaviour
     {
         orderListUI.SetOrderText(orderList);
 
-        scoreText.text = Score + scoreSymbol;
+        scoreText.text = Score + scoreSymbol + " Earned";
 
         foreach (Order o in orderList)
         {
@@ -205,6 +224,13 @@ public class DayManager : MonoBehaviour
     public void Begin()
     {
         opening.SetActive(false);
+        working = true;
+        player.GetComponent<PlayerMovement>().enabled = true;
+    }
+
+    public void NextDay()
+    {
+        nextDayDialogue.SetActive(false);
         working = true;
         player.GetComponent<PlayerMovement>().enabled = true;
     }
