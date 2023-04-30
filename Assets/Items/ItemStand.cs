@@ -48,7 +48,11 @@ public class ItemStand : InteractableBehaviour
 
             if (timeSinceTaken > timeToWait2)
             {
-                itemOnStand.GetComponentInChildren<MeshRenderer>().enabled = true;
+                MeshRenderer[] renderers = itemOnStand.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer mr in renderers)
+                {
+                    mr.enabled = true;
+                }
                 itemTaken = false;
             }
         }
@@ -62,7 +66,12 @@ public class ItemStand : InteractableBehaviour
 
     public Holdable TakeItem()
     {
-        itemOnStand.GetComponentInChildren<MeshRenderer>().enabled = false;
+        MeshRenderer[] renderers = itemOnStand.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer mr in renderers)
+        {
+            mr.enabled = false;
+        }
+
         itemTaken = true;
         timeSinceTaken = 0f;
 
@@ -83,5 +92,15 @@ public class ItemStand : InteractableBehaviour
     public override void SecondaryAction(PlayerMovement player)
     {
         // Do nothing
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        PopupManager.Instance.ShowPopup(item);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        PopupManager.Instance.HidePopup();
     }
 }

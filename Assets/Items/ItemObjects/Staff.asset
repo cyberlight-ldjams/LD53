@@ -15,5 +15,6 @@ MonoBehaviour:
   itemName: Staff
   description: Like, for wizards
   model: {fileID: 3408355801127585755, guid: 0400b1be66d16b74b9a8f3390d981eea, type: 3}
-  value: 100
+  value: 71
+  Icon: {fileID: 2800000, guid: bbe17bbf0dcd5244e8f8ebde0bcc2338, type: 3}
   scaleCorrection: {x: 1, y: 1, z: 1}

@@ -11,8 +11,6 @@ public class PopupManager : MonoBehaviour
 
     public static PopupManager Instance { get; private set; }
 
-    
-
     [SerializeField]
     [Range(0f, 2f)]
     private float fadeTime = 1.0f;
@@ -27,10 +25,8 @@ public class PopupManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI primaryAction, secondaryAction;
 
-    [SerializeField]
-    private Item temp;
-
     private CanvasGroup popup;
+
     private float desiredAlpha = 0f;
 
     private string symbol;
@@ -41,7 +37,6 @@ public class PopupManager : MonoBehaviour
         {
             Destroy(this);
             return;
-
         }
 
         symbol = value.text;    
@@ -49,14 +44,7 @@ public class PopupManager : MonoBehaviour
         popup.alpha = 0f;
         popup.interactable = false;
 
-
         Instance = this;
-
-    }
-
-    private void Start()
-    {
-        ShowPopup(temp);
     }
 
     public void ShowPopup(Item item)
@@ -82,5 +70,4 @@ public class PopupManager : MonoBehaviour
             popup.alpha = Mathf.Lerp(popup.alpha, desiredAlpha, Time.deltaTime * fadeTime);
         }
     }
-
 }
