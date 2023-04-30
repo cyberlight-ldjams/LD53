@@ -27,9 +27,9 @@ public class DropoffPoint : InteractableBehaviour
     {
         if (player.holdingBox)
         {
-            Item held = player.ReleaseItem();
+            Holdable held = player.ReleaseHoldableItem();
             // Make sure this is a box
-            if (held.isBox)
+            if (held.IsBox())
             {
                 CompleteOrder((Box) held);
             }

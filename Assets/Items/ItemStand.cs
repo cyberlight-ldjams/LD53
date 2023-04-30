@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ItemStand : InteractableBehaviour
 {
-    public GameObject itemModel;
 
     public GameObject itemOnStand;
 
@@ -36,16 +35,16 @@ public class ItemStand : InteractableBehaviour
 
     void Start()
     {
-        if (itemModel != null)
+        if (item.model != null)
         {
             Transform t = this.gameObject.transform;
-            itemOnStand = Instantiate(itemModel,
+            itemOnStand = Instantiate(item.model,
                 new Vector3(0f + positionCorrection.x, 1.5f + positionCorrection.y, 0f + positionCorrection.z),
                 Quaternion.identity, t);
             itemOnStand.transform.localScale = new Vector3(
-                (1f / t.localScale.x) * itemModel.transform.localScale.x * scaleCorrection.x,
-                (1f / t.localScale.y) * itemModel.transform.localScale.y * scaleCorrection.y,
-                (1f / t.localScale.z) * itemModel.transform.localScale.z * scaleCorrection.z);
+                (1f / t.localScale.x) * item.model.transform.localScale.x * scaleCorrection.x,
+                (1f / t.localScale.y) * item.model.transform.localScale.y * scaleCorrection.y,
+                (1f / t.localScale.z) * item.model.transform.localScale.z * scaleCorrection.z);
         }
     }
 
@@ -73,7 +72,7 @@ public class ItemStand : InteractableBehaviour
         poofer.Play();
     }
 
-    public Item TakeItem()
+    public Holdable TakeItem()
     {
         /**
         Item i = new Item();
@@ -87,7 +86,7 @@ public class ItemStand : InteractableBehaviour
         itemTaken = true;
         timeSinceTaken = 0f;
 
-        return item;
+        return Holdable.FromItem(item);
     }
 
     public override void PrimaryAction(PlayerMovement player)
