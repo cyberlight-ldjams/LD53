@@ -87,6 +87,7 @@ public class DayManager : MonoBehaviour
     {
         orderList = GenerateOrders(numberOfOrdersToday, minOrderSize, maxOrderSize);
         UpdateOrderList();
+        timeRemaining = TimePerDay;
         working = true;
     }
 
@@ -97,10 +98,11 @@ public class DayManager : MonoBehaviour
         foreach (Order o in orderList)
         {
             dailyTotal += o.GetOrderValue();
-            orderList.Remove(o);
         }
 
-        UpdateOrderList();
+        orderList.Clear();
+
+        StartNewDay();
     }
 
     private List<Order> GenerateOrders(int orderNum, int orderSizeMin, int orderSizeMax)
