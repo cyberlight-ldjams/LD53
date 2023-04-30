@@ -32,6 +32,7 @@ public class DropoffPoint : InteractableBehaviour
             if (held.IsBox())
             {
                 CompleteOrder((Box) held);
+                player.ReleaseHoldableItem();
             }
             // If not, give it back to the player
             else

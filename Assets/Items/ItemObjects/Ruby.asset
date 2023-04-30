@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ca150548419f14c8df0105be03e52a, type: 3}
   m_Name: Ruby
   m_EditorClassIdentifier: 
-  itemName: 
-  description: 
-  model: {fileID: 0}
-  value: 0
+  itemName: Ruby
+  description: A rarer gemstone
+  model: {fileID: 9113403063161636692, guid: c913caa3bc87749429359497f231a6c9, type: 3}
+  value: 100
