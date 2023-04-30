@@ -18,7 +18,7 @@ public abstract class InteractableBehaviour : MonoBehaviour
         //
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
 
         if (other.CompareTag("Player"))
@@ -31,7 +31,7 @@ public abstract class InteractableBehaviour : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("Player"))
         {
