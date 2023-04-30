@@ -11,7 +11,6 @@ public class ItemStand : InteractableBehaviour
 
     public ParticleSystem poofer;
 
-
     public bool itemTaken { get; private set; }
 
     // Use this if the item's position on the stand needs to be modified - added
