@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class BoxingStation : InteractableBehaviour
 {
@@ -13,6 +14,8 @@ public class BoxingStation : InteractableBehaviour
     public Box boxedBox;
 
     public Item boxItem;
+
+    public Inventory holder;
 
     public List<GameObject> modelsOnStation;
 
@@ -30,12 +33,18 @@ public class BoxingStation : InteractableBehaviour
 
     public Box PlaceItemAtStation(Holdable item)
     {
+        if (item.IsBox())
+        {
+            return null;
+        }
+        
         if (boxedBox != null)
         {
             return boxedBox;
         }
 
         itemsAtStation.Add(item.ItemReference);
+        holder.Push(item.ItemReference);
 
         if (automagic)
         {
@@ -47,28 +56,10 @@ public class BoxingStation : InteractableBehaviour
 
     public Holdable RemoveFirstItemFromStation()
     {
-        foreach (Item i in itemsAtStation)
-        {
-            itemsAtStation.Remove(i);
-            return Holdable.FromItem(i);
-        }
-
-        return null;
-    }
-
-    public Holdable RemoveItemFromStation(Item item)
-    {
-        foreach (Item i in itemsAtStation)
-        {
-            if (i.itemName.Equals(item.itemName))
-            {
-                itemsAtStation.Remove(i);
-
-                return Holdable.FromItem(i);
-            }
-        }
-
-        return null;
+        Item i = itemsAtStation[itemsAtStation.Count - 1];
+        itemsAtStation.Remove(i);
+        Destroy(holder.Pop());
+        return Holdable.FromItem(i);
     }
 
     public Box BoxOrder()
@@ -82,6 +73,7 @@ public class BoxingStation : InteractableBehaviour
             foreach (Item i in itemsAtStation)
             {
                 box.AddItem(i);
+                Destroy(holder.Pop());
             }
 
             // The items are being boxed, they're gone
@@ -116,22 +108,22 @@ public class BoxingStation : InteractableBehaviour
         return null;
     }
 
-    public override void PrimaryAction(PlayerMovement player)
+    public override void SecondaryAction(PlayerMovement player)
     {
-        if(player.HasItem())
+        if(boxedBox == null && player.HasItem())
         {
             PlaceItemAtStation(player.ReleaseHoldableItem());
-        } else if (boxedBox != null)
+        }
+    }
+
+    public override void PrimaryAction(PlayerMovement player)
+    {
+        if (boxedBox != null && player.CanHoldBox())
         {
             player.HoldItem(boxedBox);
             boxModel.SetActive(false);
             boxedBox = null;
-        }
-    }
-
-    public override void SecondaryAction(PlayerMovement player)
-    {
-        if (itemsAtStation.Count > 0 && player.CanHoldItem())
+        } else if (itemsAtStation.Count > 0 && player.CanHoldItem())
         {
             player.HoldItem(RemoveFirstItemFromStation());
         }

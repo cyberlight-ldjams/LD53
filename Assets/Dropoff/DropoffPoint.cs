@@ -44,6 +44,6 @@ public class DropoffPoint : InteractableBehaviour
 
     public override void SecondaryAction(PlayerMovement player)
     {
-        // Do nothing
+        PrimaryAction(player);
     }
 }

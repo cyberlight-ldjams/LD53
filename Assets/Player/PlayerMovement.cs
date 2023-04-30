@@ -139,6 +139,11 @@ public class PlayerMovement : MonoBehaviour
         return (!holdingBox && heldItems.Count < holdCapacity);
     }
 
+    public bool CanHoldBox()
+    {
+        return (!holdingBox && heldItems.Count == 0);
+    }
+
     public Holdable ReleaseHoldableItem()
     {
         if(heldItems.Count == 0)
