@@ -15,8 +15,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float targetLerpSpeed = 1f;
 
-    private NavMeshAgent agent;
+    [SerializeField]
+    private List<Item> heldItems;
 
+    [SerializeField]
+    private int holdCapacity;
+
+    [SerializeField]
+    public bool holdingBox { get; private set; }
+
+    private NavMeshAgent agent;
 
     private Vector3 _movement, _lastDirection, _targetDirection;
     private float lerpTime = 0f;
@@ -31,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
     void OnMove(InputValue inputValue) { 
         Vector2 input = inputValue.Get<Vector2>();
         _movement = new Vector3(input.x, 0, input.y);
-
     }
 
     void Awake()
@@ -41,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
         primary = controls.actions.FindAction("PrimaryAction");
         secondary = controls.actions.FindAction("SecondaryAction");
         SetCurrentInteractable(null);
-
     }
 
     void Update()
@@ -66,6 +72,62 @@ public class PlayerMovement : MonoBehaviour
         lerpTime += Time.deltaTime;
     }
 
+    public void HoldItem(Item item)
+    {
+        Debug.Log("HOLD: " + item.itemName);
+
+        if (item.isBox)
+        {
+            if (heldItems.Count == 0)
+            {
+                holdingBox = true;
+                heldItems.Add(item);
+            }
+        } else if (!holdingBox && heldItems.Count < holdCapacity)
+        {
+            heldItems.Add(item);
+        } // else, do nothing
+    }
+
+    public Item ReleaseItem()
+    {
+        // Return the first item in hand
+        for (int i = 0; i < heldItems.Count; )
+        {
+            if (heldItems[i].isBox)
+            {
+                holdingBox = false;
+            }
+            Item held = heldItems[i];
+            heldItems.Remove(heldItems[i]);
+            Debug.Log(held.itemName);
+            return held;
+        }
+
+        // Else, we have no items
+        return null;
+    }
+
+    public Item ReleaseItem(Item item)
+    {
+        // Return the first item in hand that matches
+        for (int i = 0; i < heldItems.Count; i++)
+        {
+            if (heldItems[i].itemName.Equals(item.itemName))
+            {
+                if (heldItems[i].isBox)
+                {
+                    holdingBox = false;
+                }
+                Item held = heldItems[i];
+                heldItems.Remove(heldItems[i]);
+                return held;
+            }
+        }
+
+        // Else, we have no items
+        return null;
+    }
 
     public void SetCurrentInteractable(InteractableBehaviour current)
     {
@@ -80,8 +142,6 @@ public class PlayerMovement : MonoBehaviour
             secondary.Disable();
         }
     }
-
-   
 
     private void OnPrimaryAction(InputValue input)
     {

@@ -13,4 +13,8 @@ public class Item : ScriptableObject
     public GameObject model;
 
     public float value;
+
+    public bool isBox = false;
+
+    public Box box;
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Box
+public class Box : Item
 { 
     public List<Item> Items { get; private set; }
 

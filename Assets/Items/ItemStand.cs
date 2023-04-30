@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemStand : MonoBehaviour
+public class ItemStand : InteractableBehaviour
 {
     public GameObject itemModel;
 
@@ -11,6 +11,8 @@ public class ItemStand : MonoBehaviour
     public Item item;
 
     public ParticleSystem poofer;
+
+    public PlayerMovement pm;
 
     public bool itemTaken { get; private set; }
 
@@ -38,14 +40,16 @@ public class ItemStand : MonoBehaviour
         if (itemModel != null)
         {
             Transform t = this.gameObject.transform;
-            itemOnStand = Instantiate(itemModel, 
-                new Vector3(0f + positionCorrection.x, 1.5f + positionCorrection.y, 0f + positionCorrection.z), 
+            itemOnStand = Instantiate(itemModel,
+                new Vector3(0f + positionCorrection.x, 1.5f + positionCorrection.y, 0f + positionCorrection.z),
                 Quaternion.identity, t);
             itemOnStand.transform.localScale = new Vector3(
-                (1f/t.localScale.x) * itemModel.transform.localScale.x * scaleCorrection.x, 
-                (1f/t.localScale.y) * itemModel.transform.localScale.y * scaleCorrection.y, 
-                (1f/t.localScale.z) * itemModel.transform.localScale.z * scaleCorrection.z);
+                (1f / t.localScale.x) * itemModel.transform.localScale.x * scaleCorrection.x,
+                (1f / t.localScale.y) * itemModel.transform.localScale.y * scaleCorrection.y,
+                (1f / t.localScale.z) * itemModel.transform.localScale.z * scaleCorrection.z);
         }
+
+        pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -61,7 +65,7 @@ public class ItemStand : MonoBehaviour
 
             if (timeSinceTaken > timeToWait2)
             {
-                itemOnStand.GetComponent<MeshRenderer>().enabled = true;
+                itemOnStand.GetComponentInChildren<MeshRenderer>().enabled = true;
                 itemTaken = false;
             }
         }
@@ -74,15 +78,30 @@ public class ItemStand : MonoBehaviour
 
     public Item TakeItem()
     {
-        itemOnStand.GetComponent<MeshRenderer>().enabled = false;
+        Item i = new Item();
+        i.itemName = item.itemName;
+        i.description = item.description;
+        i.value = item.value;
+        i.model = item.model;
+        i.isBox = item.isBox;
+
+        itemOnStand.GetComponentInChildren<MeshRenderer>().enabled = false;
         itemTaken = true;
         timeSinceTaken = 0f;
 
-        return item;
+        return i;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public override void PrimaryAction()
     {
-        Debug.Log("Testing 1, 2, 3");
+        if (!itemTaken)
+        {
+            pm.HoldItem(TakeItem());
+        }
+    }
+
+    public override void SecondaryAction()
+    {
+        // Do nothing
     }
 }
