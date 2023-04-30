@@ -10,7 +10,7 @@ public abstract class InteractableBehaviour : MonoBehaviour
 
     public void ShowInteractions()
     {
-        Debug.Log("Show a popup?");
+        //
     }
 
     public void HideInteractions()
@@ -20,7 +20,6 @@ public abstract class InteractableBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
 
         if (other.CompareTag("Player"))
         {
@@ -41,9 +40,9 @@ public abstract class InteractableBehaviour : MonoBehaviour
         }
     }
 
-    public abstract void PrimaryAction();
+    public abstract void PrimaryAction(PlayerMovement player);
 
-    public abstract void SecondaryAction(); 
+    public abstract void SecondaryAction(PlayerMovement player); 
 
     
 }

@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private List<Item> heldItems;
 
     [SerializeField]
-    private int holdCapacity;
+    [Min(1)]
+    private int holdCapacity = 1;
 
     [SerializeField]
     public bool holdingBox { get; private set; }
@@ -34,6 +35,20 @@ public class PlayerMovement : MonoBehaviour
 
     private InteractableBehaviour currentInteractable = null;
 
+
+    /**
+     * @
+     */
+    public bool HasItem(Item item = null)
+    {
+        if (item == null)
+        {
+            return heldItems.Count > 0;
+        } else
+        {
+            return heldItems.Contains(item);
+        }
+    }
 
     //This is triggered automatically by the PlayerInput component when the Move action occurs.
     void OnMove(InputValue inputValue) { 
@@ -74,8 +89,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void HoldItem(Item item)
     {
-        Debug.Log("HOLD: " + item.itemName);
-
         if (item.isBox)
         {
             if (heldItems.Count == 0)
@@ -83,10 +96,15 @@ public class PlayerMovement : MonoBehaviour
                 holdingBox = true;
                 heldItems.Add(item);
             }
-        } else if (!holdingBox && heldItems.Count < holdCapacity)
+        } else if (CanHoldItem())
         {
             heldItems.Add(item);
         } // else, do nothing
+    }
+
+    public bool CanHoldItem()
+    {
+        return (!holdingBox && heldItems.Count < holdCapacity);
     }
 
     public Item ReleaseItem()
@@ -145,11 +163,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnPrimaryAction(InputValue input)
     {
-        currentInteractable.PrimaryAction();
+        currentInteractable.PrimaryAction(this);
     }
 
     private void OnSecondaryAction(InputValue input)
     {
-        currentInteractable.SecondaryAction();
+        currentInteractable.SecondaryAction(this);
     }
 }

@@ -55,6 +55,13 @@ public class DayManager : MonoBehaviour
         Pause();
 
         scoreText.text = Score + scoreSymbol;
+
+        //Just so we can hide this by default
+        if(!opening.activeInHierarchy)
+        {
+            Debug.Log("Note: Skipping intro text.");
+            Begin();
+        }
     }
 
     // Update is called once per frame

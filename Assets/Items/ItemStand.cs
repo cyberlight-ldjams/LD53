@@ -12,7 +12,6 @@ public class ItemStand : InteractableBehaviour
 
     public ParticleSystem poofer;
 
-    public PlayerMovement pm;
 
     public bool itemTaken { get; private set; }
 
@@ -48,8 +47,6 @@ public class ItemStand : InteractableBehaviour
                 (1f / t.localScale.y) * itemModel.transform.localScale.y * scaleCorrection.y,
                 (1f / t.localScale.z) * itemModel.transform.localScale.z * scaleCorrection.z);
         }
-
-        pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -78,29 +75,30 @@ public class ItemStand : InteractableBehaviour
 
     public Item TakeItem()
     {
+        /**
         Item i = new Item();
         i.itemName = item.itemName;
         i.description = item.description;
         i.value = item.value;
         i.model = item.model;
         i.isBox = item.isBox;
-
+        */
         itemOnStand.GetComponentInChildren<MeshRenderer>().enabled = false;
         itemTaken = true;
         timeSinceTaken = 0f;
 
-        return i;
+        return item;
     }
 
-    public override void PrimaryAction()
+    public override void PrimaryAction(PlayerMovement player)
     {
-        if (!itemTaken)
+        if (!itemTaken && player.CanHoldItem())
         {
-            pm.HoldItem(TakeItem());
+            player.HoldItem(TakeItem());
         }
     }
 
-    public override void SecondaryAction()
+    public override void SecondaryAction(PlayerMovement player)
     {
         // Do nothing
     }

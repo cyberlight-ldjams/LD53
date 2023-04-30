@@ -7,13 +7,6 @@ public class DropoffPoint : InteractableBehaviour
 {
     public DayManager dm;
 
-    public PlayerMovement pm;
-
-    void Start()
-    {
-        pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-    }
-
     public Order CompleteOrder(Box box)
     {
         foreach (Order o in dm.orderList)
@@ -30,11 +23,11 @@ public class DropoffPoint : InteractableBehaviour
         return null;
     }
 
-    public override void PrimaryAction()
+    public override void PrimaryAction(PlayerMovement player)
     {
-        if (pm.holdingBox)
+        if (player.holdingBox)
         {
-            Item held = pm.ReleaseItem();
+            Item held = player.ReleaseItem();
             // Make sure this is a box
             if (held.isBox)
             {
@@ -43,12 +36,12 @@ public class DropoffPoint : InteractableBehaviour
             // If not, give it back to the player
             else
             {
-                pm.HoldItem(held);
+                player.HoldItem(held);
             }
         }
     }
 
-    public override void SecondaryAction()
+    public override void SecondaryAction(PlayerMovement player)
     {
         // Do nothing
     }

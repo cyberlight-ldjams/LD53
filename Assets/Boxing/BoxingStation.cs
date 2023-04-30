@@ -10,13 +10,6 @@ public class BoxingStation : InteractableBehaviour
 
     public bool automagic = true;
 
-    public PlayerMovement pm;
-
-    void Start()
-    {
-        pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-    }
-
     public Box PlaceItemAtStation(Item item)
     {
         itemsAtStation.Add(item);
@@ -91,17 +84,19 @@ public class BoxingStation : InteractableBehaviour
         return null;
     }
 
-    public override void PrimaryAction()
+    public override void PrimaryAction(PlayerMovement player)
     {
-        Debug.Log("Box the item, Krunk!");
-        PlaceItemAtStation(pm.ReleaseItem());
+        if(player.HasItem())
+        {
+            PlaceItemAtStation(player.ReleaseItem());
+        }
     }
 
-    public override void SecondaryAction()
+    public override void SecondaryAction(PlayerMovement player)
     {
         if (itemsAtStation.Count > 0)
         {
-            pm.HoldItem(RemoveItemFromStation());
+            player.HoldItem(RemoveItemFromStation());
         }
     }
 }
