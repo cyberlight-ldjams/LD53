@@ -16,3 +16,4 @@ MonoBehaviour:
   description: A Common Bulgarian Thornneck Egg
   model: {fileID: 7978190013745609161, guid: b4e75de7578d9b74faf071703e669055, type: 3}
   value: 25
+  scaleCorrection: {x: 1, y: 1, z: 1}

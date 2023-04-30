@@ -16,3 +16,4 @@ MonoBehaviour:
   description: A magic orb! For doing... magic orb things...
   model: {fileID: 6478392042919366683, guid: adcec80393d2b754998c9b26bdf0d3bc, type: 3}
   value: 20
+  scaleCorrection: {x: 1, y: 1, z: 1}

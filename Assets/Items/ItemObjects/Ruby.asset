@@ -16,3 +16,4 @@ MonoBehaviour:
   description: A rarer gemstone
   model: {fileID: 9113403063161636692, guid: c913caa3bc87749429359497f231a6c9, type: 3}
   value: 50
+  scaleCorrection: {x: 1, y: 1, z: 1}

@@ -13,4 +13,7 @@ public class Item : ScriptableObject
     public GameObject model;
 
     public float value;
+
+    // Use this if the scale needs to be modified - multiply by this
+    public Vector3 scaleCorrection = new Vector3(1f, 1f, 1f);
 }

@@ -16,3 +16,4 @@ MonoBehaviour:
   description: For storing potions, or whatever they put in these
   model: {fileID: 3273200596772416070, guid: 67af33b2504fd534387c7a0e00afdde2, type: 3}
   value: 1
+  scaleCorrection: {x: 1, y: 1, z: 1}

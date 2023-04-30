@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent (typeof(Rigidbody))]
@@ -39,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     private InputAction primary, secondary;
 
     private InteractableBehaviour currentInteractable = null;
+
+    public Item boxItem;
 
 
     /**
@@ -113,15 +116,29 @@ public class PlayerMovement : MonoBehaviour
             {
                 holdingBox = true;
                 heldItems.Add(item);
+                item.heldModel = Instantiate(boxItem.model, transform);
+                item.heldModel.transform.localScale =
+                    new Vector3(1f / transform.localScale.x * boxItem.scaleCorrection.x,
+                    1f / transform.localScale.y * boxItem.scaleCorrection.y,
+                    1f / transform.localScale.z * boxItem.scaleCorrection.z);
             }
         } else if (CanHoldItem())
         {
             item.heldModel = Instantiate(item.ItemReference.model, transform);
-            item.heldModel.transform.localPosition = new Vector3(0, 0, 0.5f);
+            
+            // Correct item scale
+            item.heldModel.transform.localScale =
+                new Vector3(1f / transform.localScale.x 
+                * item.ItemReference.scaleCorrection.x,
+                1f / transform.localScale.y * item.ItemReference.scaleCorrection.y,
+                1f / transform.localScale.z * item.ItemReference.scaleCorrection.z);
             heldItems.Add(item);
 
 
         } // else, do nothing
+
+        // Correct item position
+        item.heldModel.transform.localPosition = new Vector3(1.3f, 1.75f, 0.5f);
     }
 
     public bool CanHoldItem()

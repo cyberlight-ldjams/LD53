@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Valuable and beautiful - be careful with it!
   model: {fileID: 7579252140208989567, guid: a4488e4ba42f6f04cb81a29c51032c30, type: 3}
   value: 75
+  scaleCorrection: {x: 1, y: 1, z: 1}

@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Will you be my purchaser?
   model: {fileID: 6711962348658514099, guid: e5061a7c451bb8a4b97a8029b7721ad8, type: 3}
   value: 30
+  scaleCorrection: {x: 1, y: 1, z: 1}

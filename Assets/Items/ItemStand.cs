@@ -17,9 +17,6 @@ public class ItemStand : InteractableBehaviour
     // Use this if the item's position on the stand needs to be modified - added
     public Vector3 positionCorrection = new Vector3(0f, 0f, 0f);
 
-    // Use this if the scale needs to be modified - multiplied
-    public Vector3 scaleCorrection = new Vector3(1f, 1f, 1f);
-
     // Time to wait before particle effect
     private readonly float timeToWait1 = 1f;
 
@@ -45,9 +42,9 @@ public class ItemStand : InteractableBehaviour
             Debug.Log("LocPos: " + localPosition);
             itemOnStand.transform.localPosition = localPosition;
             itemOnStand.transform.localScale = new Vector3(
-                (1f / t.localScale.x) * item.model.transform.localScale.x * scaleCorrection.x,
-                (1f / t.localScale.y) * item.model.transform.localScale.y * scaleCorrection.y,
-                (1f / t.localScale.z) * item.model.transform.localScale.z * scaleCorrection.z);
+                (1f / t.localScale.x) * item.model.transform.localScale.x * item.scaleCorrection.x,
+                (1f / t.localScale.y) * item.model.transform.localScale.y * item.scaleCorrection.y,
+                (1f / t.localScale.z) * item.model.transform.localScale.z * item.scaleCorrection.z);
         }
     }
 
@@ -97,6 +94,9 @@ public class ItemStand : InteractableBehaviour
         if (!itemTaken && player.CanHoldItem())
         {
             player.HoldItem(TakeItem());
+            PlayerAnimation pa = player.gameObject.GetComponent<PlayerAnimation>();
+            pa.hold = true;
+            pa.pickUp = true;
         }
     }
 

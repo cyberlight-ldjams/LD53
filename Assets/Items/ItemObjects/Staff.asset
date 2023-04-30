@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Like, for wizards
   model: {fileID: 3408355801127585755, guid: 0400b1be66d16b74b9a8f3390d981eea, type: 3}
   value: 100
+  scaleCorrection: {x: 1, y: 1, z: 1}
