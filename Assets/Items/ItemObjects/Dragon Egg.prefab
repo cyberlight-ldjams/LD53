@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3646964340439204829}
-  - component: {fileID: 6755044698522808029}
   m_Layer: 0
   m_Name: Dragon Egg
   m_TagString: Untagged
@@ -29,25 +28,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9072136659931786918}
+  - {fileID: 8455752965506556674}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6755044698522808029
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978190013745609161}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5282593
-  m_Height: 1.4086914
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.2956543, z: -0.028259277}
---- !u!1001 &8821440358634555725
+--- !u!1001 &8273789784439391465
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -60,15 +45,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5304d22bf17639409057411ae670625, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5304d22bf17639409057411ae670625, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5304d22bf17639409057411ae670625, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7570261
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5304d22bf17639409057411ae670625, type: 3}
       propertyPath: m_LocalPosition.x
@@ -76,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5304d22bf17639409057411ae670625, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5304d22bf17639409057411ae670625, type: 3}
       propertyPath: m_LocalPosition.z
@@ -110,18 +95,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5304d22bf17639409057411ae670625, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a5304d22bf17639409057411ae670625, type: 3}
       propertyPath: m_Name
       value: Egg
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5304d22bf17639409057411ae670625, type: 3}
---- !u!4 &9072136659931786918 stripped
+--- !u!4 &8455752965506556674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a5304d22bf17639409057411ae670625, type: 3}
-  m_PrefabInstance: {fileID: 8821440358634555725}
+  m_PrefabInstance: {fileID: 8273789784439391465}
   m_PrefabAsset: {fileID: 0}
