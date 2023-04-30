@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
-public class BoxingStation : MonoBehaviour
+public class BoxingStation : InteractableBehaviour
 {
     public DayManager dm;
 
@@ -10,9 +11,40 @@ public class BoxingStation : MonoBehaviour
 
     public bool automagic = true;
 
-    public Box PlaceItemAtStation(Item item)
+    public Box boxedBox;
+
+    public Item boxItem;
+
+    public Inventory holder;
+
+    public List<GameObject> modelsOnStation;
+
+    private GameObject boxModel;
+
+    void Start()
     {
-        itemsAtStation.Add(item);
+        GameObject go = Instantiate(this.boxItem.model, Vector3.zero,
+                Quaternion.identity, this.gameObject.transform);
+        go.transform.localPosition = new Vector3(0, 0.67f, 0);
+        go.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        boxModel = go;
+        boxModel.SetActive(false);
+    }
+
+    public Box PlaceItemAtStation(Holdable item)
+    {
+        if (item.IsBox())
+        {
+            return null;
+        }
+        
+        if (boxedBox != null)
+        {
+            return boxedBox;
+        }
+
+        itemsAtStation.Add(item.ItemReference);
+        holder.Push(item.ItemReference);
 
         if (automagic)
         {
@@ -22,19 +54,12 @@ public class BoxingStation : MonoBehaviour
         return null;
     }
 
-    public Item RemoveItemFromStation(Item item)
+    public Holdable RemoveFirstItemFromStation()
     {
-        foreach (Item i in itemsAtStation)
-        {
-            if (i.itemName.Equals(item.itemName))
-            {
-                itemsAtStation.Remove(i);
-
-                return i;
-            }
-        }
-
-        return null;
+        Item i = itemsAtStation[itemsAtStation.Count - 1];
+        itemsAtStation.Remove(i);
+        Destroy(holder.Pop());
+        return Holdable.FromItem(i);
     }
 
     public Box BoxOrder()
@@ -48,8 +73,15 @@ public class BoxingStation : MonoBehaviour
             foreach (Item i in itemsAtStation)
             {
                 box.AddItem(i);
+                Destroy(holder.Pop());
             }
 
+            // The items are being boxed, they're gone
+            itemsAtStation.RemoveRange(0, itemsAtStation.Count);
+
+            boxModel.SetActive(true);
+
+            boxedBox = box;
             return box;
         } // else
 
@@ -62,14 +94,38 @@ public class BoxingStation : MonoBehaviour
     {
         foreach (Order o in dm.orderList)
         {
-            bool check = o.CheckAgainstOrder(itemsAtStation);
-
-            if (check == true)
+            if (!o.Completed)
             {
-                return o;
+                bool check = o.CheckAgainstOrder(itemsAtStation);
+
+                if (check == true)
+                {
+                    return o;
+                }
             }
         }
 
         return null;
+    }
+
+    public override void SecondaryAction(PlayerMovement player)
+    {
+        if(boxedBox == null && player.HasItem())
+        {
+            PlaceItemAtStation(player.ReleaseHoldableItem());
+        }
+    }
+
+    public override void PrimaryAction(PlayerMovement player)
+    {
+        if (boxedBox != null && player.CanHoldBox())
+        {
+            player.HoldItem(boxedBox);
+            boxModel.SetActive(false);
+            boxedBox = null;
+        } else if (itemsAtStation.Count > 0 && player.CanHoldItem())
+        {
+            player.HoldItem(RemoveFirstItemFromStation());
+        }
     }
 }

@@ -15,4 +15,6 @@ MonoBehaviour:
   itemName: Dragon Egg
   description: A Common Bulgarian Thornneck Egg
   model: {fileID: 7978190013745609161, guid: b4e75de7578d9b74faf071703e669055, type: 3}
-  value: 20
+  value: 37
+  Icon: {fileID: 2800000, guid: ce8931081e847694d8ef7d80acaaef99, type: 3}
+  scaleCorrection: {x: 1, y: 1, z: 1}

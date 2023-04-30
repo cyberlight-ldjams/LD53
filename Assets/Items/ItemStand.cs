@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemStand : MonoBehaviour
+public class ItemStand : InteractableBehaviour
 {
-    public GameObject itemModel;
 
     public GameObject itemOnStand;
 
@@ -16,9 +15,6 @@ public class ItemStand : MonoBehaviour
 
     // Use this if the item's position on the stand needs to be modified - added
     public Vector3 positionCorrection = new Vector3(0f, 0f, 0f);
-
-    // Use this if the scale needs to be modified - multiplied
-    public Vector3 scaleCorrection = new Vector3(1f, 1f, 1f);
 
     // Time to wait before particle effect
     private readonly float timeToWait1 = 1f;
@@ -35,17 +31,8 @@ public class ItemStand : MonoBehaviour
 
     void Start()
     {
-        if (itemModel != null)
-        {
-            Transform t = this.gameObject.transform;
-            itemOnStand = Instantiate(itemModel, 
-                new Vector3(0f + positionCorrection.x, 1.5f + positionCorrection.y, 0f + positionCorrection.z), 
-                Quaternion.identity, t);
-            itemOnStand.transform.localScale = new Vector3(
-                (1f/t.localScale.x) * itemModel.transform.localScale.x * scaleCorrection.x, 
-                (1f/t.localScale.y) * itemModel.transform.localScale.y * scaleCorrection.y, 
-                (1f/t.localScale.z) * itemModel.transform.localScale.z * scaleCorrection.z);
-        }
+       itemOnStand = item.Rescale(transform, positionCorrection);
+
     }
 
     void Update()
@@ -61,10 +48,15 @@ public class ItemStand : MonoBehaviour
 
             if (timeSinceTaken > timeToWait2)
             {
-                itemOnStand.GetComponent<MeshRenderer>().enabled = true;
+                MeshRenderer[] renderers = itemOnStand.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer mr in renderers)
+                {
+                    mr.enabled = true;
+                }
                 itemTaken = false;
             }
         }
+
     }
 
     public void Poof()
@@ -72,12 +64,45 @@ public class ItemStand : MonoBehaviour
         poofer.Play();
     }
 
-    public Item TakeItem()
+    public Holdable TakeItem()
     {
-        itemOnStand.GetComponent<MeshRenderer>().enabled = false;
+        MeshRenderer[] renderers = itemOnStand.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer mr in renderers)
+        {
+            mr.enabled = false;
+        }
+
         itemTaken = true;
         timeSinceTaken = 0f;
 
-        return item;
+        return Holdable.FromItem(item); 
+    }
+
+    public override void PrimaryAction(PlayerMovement player)
+    {
+        if (!itemTaken && player.CanHoldItem())
+        {
+            player.HoldItem(TakeItem());
+            PlayerAnimation pa = player.gameObject.GetComponent<PlayerAnimation>();
+            pa.hold = true;
+            pa.pickUp = true;
+        }
+    }
+
+    public override void SecondaryAction(PlayerMovement player)
+    {
+        // Do nothing
+    }
+
+    private new void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        PopupManager.Instance.ShowPopup(item);
+    }
+
+    private new void OnTriggerExit(Collider other)
+    {
+        base.OnTriggerExit(other);
+        PopupManager.Instance.HidePopup();
     }
 }

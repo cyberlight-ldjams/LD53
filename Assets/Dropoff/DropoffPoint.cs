@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-public class DropoffPoint : MonoBehaviour
+public class DropoffPoint : InteractableBehaviour
 {
     public DayManager dm;
 
@@ -11,7 +11,7 @@ public class DropoffPoint : MonoBehaviour
     {
         foreach (Order o in dm.orderList)
         {
-            if (o.CheckAgainstOrder(box.Items))
+            if (!o.Completed && o.CheckAgainstOrder(box.Items))
             {
                 return dm.CompleteOrder(o);
             }
@@ -21,5 +21,29 @@ public class DropoffPoint : MonoBehaviour
         // Unless we decide to have the player
         // be able to box inaccurate orders
         return null;
+    }
+
+    public override void PrimaryAction(PlayerMovement player)
+    {
+        if (player.holdingBox)
+        {
+            Holdable held = player.ReleaseHoldableItem();
+            // Make sure this is a box
+            if (held.IsBox())
+            {
+                CompleteOrder((Box) held);
+                player.ReleaseHoldableItem();
+            }
+            // If not, give it back to the player
+            else
+            {
+                player.HoldItem(held);
+            }
+        }
+    }
+
+    public override void SecondaryAction(PlayerMovement player)
+    {
+        PrimaryAction(player);
     }
 }

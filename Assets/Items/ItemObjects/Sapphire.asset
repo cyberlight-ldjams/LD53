@@ -15,4 +15,6 @@ MonoBehaviour:
   itemName: Sapphire
   description: A rare-ish gemstone
   model: {fileID: 1872395529445322450, guid: 14315cb9d69200b4580578df1da15b82, type: 3}
-  value: 50
+  value: 23
+  Icon: {fileID: 2800000, guid: 04297c41d45ce53489eb64d77df5a2fa, type: 3}
+  scaleCorrection: {x: 1, y: 1, z: 1}
