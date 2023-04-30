@@ -18,14 +18,17 @@ public class PlayerMovement : MonoBehaviour
     private float targetLerpSpeed = 1f;
 
     [SerializeField]
-    private List<Item> heldItems;
+    private List<Holdable> heldItems;
 
     [SerializeField]
     [Min(1)]
     private int holdCapacity = 1;
 
     [SerializeField]
-    public bool holdingBox { get; private set; }
+    public bool holdingBox { get; private set; } = false;
+
+    [SerializeField]
+    private GameObject orderList;
 
     private NavMeshAgent agent;
 
@@ -48,7 +51,12 @@ public class PlayerMovement : MonoBehaviour
             return heldItems.Count > 0;
         } else
         {
-            return heldItems.Contains(item);
+            Holdable myItem = heldItems.Find((Holdable h) =>
+            {
+                return (h.ItemReference == item);
+            });
+
+            return myItem != null;
         }
     }
 
@@ -68,6 +76,11 @@ public class PlayerMovement : MonoBehaviour
         
         //Shouldn't ever actually have to do this, but in case it disappears again...
         GetComponent<Rigidbody>().freezeRotation = true;
+    }
+
+    private void Start()
+    {
+        heldItems = new List<Holdable>();
     }
 
     void Update()
@@ -92,9 +105,9 @@ public class PlayerMovement : MonoBehaviour
         lerpTime += Time.deltaTime;
     }
 
-    public void HoldItem(Item item)
+    public void HoldItem(Holdable item)
     {
-        if (item.isBox)
+        if (item.IsBox())
         {
             if (heldItems.Count == 0)
             {
@@ -112,18 +125,23 @@ public class PlayerMovement : MonoBehaviour
         return (!holdingBox && heldItems.Count < holdCapacity);
     }
 
-    public Item ReleaseItem()
+    public Holdable ReleaseHoldableItem()
     {
+        if(heldItems.Count == 0)
+        {
+            return null;
+        }
+
         // Return the first item in hand
         for (int i = 0; i < heldItems.Count; )
         {
-            if (heldItems[i].isBox)
+            if (heldItems[i].IsBox())
             {
                 holdingBox = false;
             }
-            Item held = heldItems[i];
+            Holdable held = heldItems[i];
             heldItems.Remove(heldItems[i]);
-            Debug.Log(held.itemName);
+            Debug.Log(held.ItemReference.itemName);
             return held;
         }
 
@@ -136,13 +154,13 @@ public class PlayerMovement : MonoBehaviour
         // Return the first item in hand that matches
         for (int i = 0; i < heldItems.Count; i++)
         {
-            if (heldItems[i].itemName.Equals(item.itemName))
+            if (heldItems[i].ItemReference.itemName.Equals(item.itemName))
             {
-                if (heldItems[i].isBox)
+                if (heldItems[i].IsBox())
                 {
                     holdingBox = false;
                 }
-                Item held = heldItems[i];
+                Item held = heldItems[i].ItemReference;
                 heldItems.Remove(heldItems[i]);
                 return held;
             }
@@ -174,5 +192,13 @@ public class PlayerMovement : MonoBehaviour
     private void OnSecondaryAction(InputValue input)
     {
         currentInteractable.SecondaryAction(this);
+    }
+
+    private void OnToggleOrders(InputValue input)
+    {
+        if (orderList != null)
+        {
+            orderList.SetActive(!orderList.activeSelf);
+        }
     }
 }

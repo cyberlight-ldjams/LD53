@@ -10,9 +10,9 @@ public class BoxingStation : InteractableBehaviour
 
     public bool automagic = true;
 
-    public Box PlaceItemAtStation(Item item)
+    public Box PlaceItemAtStation(Holdable item)
     {
-        itemsAtStation.Add(item);
+        itemsAtStation.Add(item.ItemReference);
 
         if (automagic)
         {
@@ -22,18 +22,20 @@ public class BoxingStation : InteractableBehaviour
         return null;
     }
 
-    public Item RemoveItemFromStation()
+    //TODO:  This has not been converted to Holdables
+    //QUESTION: When we hold the items from this station, does it respect capacity??
+    public Holdable RemoveFirstItemFromStation()
     {
         foreach (Item i in itemsAtStation)
         {
             itemsAtStation.Remove(i);
-            return i;
+            return Holdable.FromItem(i);
         }
 
         return null;
     }
 
-    public Item RemoveItemFromStation(Item item)
+    public Holdable RemoveItemFromStation(Item item)
     {
         foreach (Item i in itemsAtStation)
         {
@@ -41,7 +43,7 @@ public class BoxingStation : InteractableBehaviour
             {
                 itemsAtStation.Remove(i);
 
-                return i;
+                return Holdable.FromItem(i);
             }
         }
 
@@ -88,7 +90,7 @@ public class BoxingStation : InteractableBehaviour
     {
         if(player.HasItem())
         {
-            PlaceItemAtStation(player.ReleaseItem());
+            PlaceItemAtStation(player.ReleaseHoldableItem());
         }
     }
 
@@ -96,7 +98,7 @@ public class BoxingStation : InteractableBehaviour
     {
         if (itemsAtStation.Count > 0)
         {
-            player.HoldItem(RemoveItemFromStation());
+            player.HoldItem(RemoveFirstItemFromStation());
         }
     }
 }
