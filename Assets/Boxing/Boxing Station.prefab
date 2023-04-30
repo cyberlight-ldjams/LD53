@@ -50,6 +50,8 @@ MonoBehaviour:
   dm: {fileID: 0}
   itemsAtStation: []
   automagic: 1
+  boxItem: {fileID: 11400000, guid: 862f5ea5440061d43bd56dadc188dbe0, type: 2}
+  modelsOnStation: []
 --- !u!65 &1802686597207814648
 BoxCollider:
   m_ObjectHideFlags: 0

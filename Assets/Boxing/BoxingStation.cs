@@ -10,8 +10,31 @@ public class BoxingStation : InteractableBehaviour
 
     public bool automagic = true;
 
+    public Box boxedBox;
+
+    public Item boxItem;
+
+    public List<GameObject> modelsOnStation;
+
+    private GameObject boxModel;
+
+    void Start()
+    {
+        GameObject go = Instantiate(this.boxItem.model, Vector3.zero,
+                Quaternion.identity, this.gameObject.transform);
+        go.transform.localPosition = new Vector3(0, 0.67f, 0);
+        go.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        boxModel = go;
+        boxModel.SetActive(false);
+    }
+
     public Box PlaceItemAtStation(Holdable item)
     {
+        if (boxedBox != null)
+        {
+            return boxedBox;
+        }
+
         itemsAtStation.Add(item.ItemReference);
 
         if (automagic)
@@ -22,8 +45,6 @@ public class BoxingStation : InteractableBehaviour
         return null;
     }
 
-    //TODO:  This has not been converted to Holdables
-    //QUESTION: When we hold the items from this station, does it respect capacity??
     public Holdable RemoveFirstItemFromStation()
     {
         foreach (Item i in itemsAtStation)
@@ -63,6 +84,12 @@ public class BoxingStation : InteractableBehaviour
                 box.AddItem(i);
             }
 
+            // The items are being boxed, they're gone
+            itemsAtStation.RemoveRange(0, itemsAtStation.Count);
+
+            boxModel.SetActive(true);
+
+            boxedBox = box;
             return box;
         } // else
 
@@ -91,12 +118,16 @@ public class BoxingStation : InteractableBehaviour
         if(player.HasItem())
         {
             PlaceItemAtStation(player.ReleaseHoldableItem());
+        } else if (boxedBox != null)
+        {
+            player.HoldItem(boxedBox);
+            boxModel.SetActive(false);
         }
     }
 
     public override void SecondaryAction(PlayerMovement player)
     {
-        if (itemsAtStation.Count > 0)
+        if (itemsAtStation.Count > 0 && player.CanHoldItem())
         {
             player.HoldItem(RemoveFirstItemFromStation());
         }
