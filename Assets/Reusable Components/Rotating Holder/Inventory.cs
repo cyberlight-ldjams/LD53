@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
-    [Range(0.1f, 0.5f)]
+    [Range(0.1f, 2.0f)]
     private float radius = 0.25f;
 
     [SerializeField]
@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     private int maxItems = 2;
 
     [SerializeField]
-    [Range(0, 5f)]
+    [Range(0, 100f)]
     private float rotationSpeed = 0.5f;
 
     private Vector3[] points;
@@ -33,21 +33,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    //Debug
-    private void Start()
-    {
-        for (int i = 0;i < maxItems;i++)
-        {
-            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            go.transform.localScale = Vector3.one * 0.1f;
-            Push(go);
-        }
-    }
-
     public void Push(GameObject item)
     {
         GameObject go = Instantiate(item, transform);
         go.transform.localPosition = points[items.Count];
+        items.Push(go);
+    }
+
+    public void Push(Item item)
+    {
+        GameObject go = Instantiate(item.model, transform);
+        go.transform.localPosition = points[items.Count];
+        go.transform.localScale = item.AutoRescale(this.gameObject.GetComponentInParent<Transform>());
         items.Push(go);
     }
 
