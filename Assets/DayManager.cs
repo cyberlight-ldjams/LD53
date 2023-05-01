@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DayManager : MonoBehaviour
 {
@@ -228,20 +229,26 @@ public class DayManager : MonoBehaviour
     {
         working = false;
         player.GetComponent<PlayerMovement>().enabled = false;
+        player.GetComponent<PlayerInput>().enabled = false;
+    }
+
+    public void Unpause()
+    {
+        working = true;
+        player.GetComponent<PlayerMovement>().enabled = true;
+        player.GetComponent<PlayerInput>().enabled = true;
     }
 
     public void Begin()
     {
         opening.SetActive(false);
-        working = true;
-        player.GetComponent<PlayerMovement>().enabled = true;
+        Unpause();
     }
 
     public void NextDay()
     {
         nextDayDialogue.SetActive(false);
-        working = true;
-        player.GetComponent<PlayerMovement>().enabled = true;
+        Unpause();
         StartNewDay();
     }
 }
