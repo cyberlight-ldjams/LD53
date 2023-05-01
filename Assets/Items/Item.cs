@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Progress;
 
 [CreateAssetMenu(menuName = "New Item")]
 public class Item : ScriptableObject
