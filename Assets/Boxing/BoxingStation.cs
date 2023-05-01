@@ -109,10 +109,7 @@ public class BoxingStation : InteractableBehaviour
 
     public override void SecondaryAction(PlayerMovement player)
     {
-        if(boxedBox == null && player.HasItem())
-        {
-            PlaceItemAtStation(player.ReleaseHoldableItem());
-        }
+        PlaceItemAtStation(player.ReleaseHoldableItem());
     }
 
     public override void PrimaryAction(PlayerMovement player)
@@ -126,5 +123,16 @@ public class BoxingStation : InteractableBehaviour
         {
             player.HoldItem(RemoveFirstItemFromStation());
         }
+    }
+
+    public override bool SecondaryActionAllowed(PlayerMovement player)
+    {
+        return (boxedBox == null && player.HasItem());
+    }
+
+    public override bool PrimaryActionAllowed(PlayerMovement player)
+    {
+        return ((boxedBox != null && player.CanHoldBox() 
+            || itemsAtStation.Count > 0) && player.CanHoldItem());
     }
 }

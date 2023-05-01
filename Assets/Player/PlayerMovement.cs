@@ -203,12 +203,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnPrimaryAction(InputValue input)
     {
-        currentInteractable.PrimaryAction(this);
+        if(currentInteractable.PrimaryActionAllowed(this))
+        {
+            currentInteractable.PrimaryAction(this);
+        }
     }
 
     private void OnSecondaryAction(InputValue input)
     {
-        currentInteractable.SecondaryAction(this);
+        if(currentInteractable.SecondaryActionAllowed(this))
+        {
+            currentInteractable.SecondaryAction(this);
+
+        }
     }
 
     private void OnToggleOrders(InputValue input)

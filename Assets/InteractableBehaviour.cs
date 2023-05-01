@@ -4,9 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Collider), typeof(Canvas))]
 public abstract class InteractableBehaviour : MonoBehaviour
 {
+    private Canvas canvas;
+
+    private void Awake()
+    {
+        canvas = GetComponent<Canvas>();
+    }
 
     public void ShowInteractions()
     {
@@ -44,5 +50,15 @@ public abstract class InteractableBehaviour : MonoBehaviour
 
     public abstract void SecondaryAction(PlayerMovement player); 
 
+    public abstract bool SecondaryActionAllowed(PlayerMovement player);
+
+    public abstract bool PrimaryActionAllowed(PlayerMovement player);
+
+    public enum InteractionState
+    {
+        AVAILABLE,
+        STARTED,
+        NONE
+    }
     
 }

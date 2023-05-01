@@ -6,14 +6,24 @@ public class TrashCan : InteractableBehaviour
 {
     public override void PrimaryAction(PlayerMovement player)
     {
+        
+    }
+
+    public override bool PrimaryActionAllowed(PlayerMovement player)
+    {
+        return false;
+    }
+
+    public override void SecondaryAction(PlayerMovement player)
+    {
         if (!player.holdingBox)
         {
             player.ReleaseHoldableItem();
         }
     }
 
-    public override void SecondaryAction(PlayerMovement player)
+    public override bool SecondaryActionAllowed(PlayerMovement player)
     {
-        PrimaryAction(player);
+        return player.HasItem();
     }
 }

@@ -31,8 +31,7 @@ public class ItemStand : InteractableBehaviour
 
     void Start()
     {
-       itemOnStand = item.Rescale(transform, positionCorrection);
-
+        ReplaceItem(item);
     }
 
     void Update()
@@ -78,24 +77,43 @@ public class ItemStand : InteractableBehaviour
         return Holdable.FromItem(item); 
     }
 
+    public void ReplaceItem(Item item)
+    {
+        itemOnStand = item.Rescale(transform, positionCorrection);
+        MeshRenderer[] renderers = itemOnStand.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer mr in renderers)
+        {
+            mr.enabled = true;
+        }
+
+        itemTaken = false;
+        timeSinceTaken = 0f;
+    }
+
+    public override bool PrimaryActionAllowed(PlayerMovement player)
+    {
+        return !itemTaken && player.CanHoldItem();
+    }
+
+    public override bool SecondaryActionAllowed(PlayerMovement player)
+    {
+        return (itemTaken && player.HasItem());
+    }
+
     public override void PrimaryAction(PlayerMovement player)
     {
-        if (!itemTaken && player.CanHoldItem())
-        {
-            player.HoldItem(TakeItem());
-            PlayerAnimation pa = player.gameObject.GetComponent<PlayerAnimation>();
-            pa.hold = true;
-            pa.pickUp = true;
+        //validation logic is now handled via the  *ActionAllowed() as it is needed elsewhere.
+        player.HoldItem(TakeItem());
+        PlayerAnimation pa = player.gameObject.GetComponent<PlayerAnimation>();
+        pa.hold = true;
+        pa.pickUp = true;
 
-            Debug.Log("Primary Action Fired.");
-        }
     }
 
     public override void SecondaryAction(PlayerMovement player)
     {
-        Debug.Log("Secondary Action Fired.");
-
-        // Do nothing
+        //validation logic is now handled via the  *ActionAllowed() as it is needed elsewhere.
+        ReplaceItem(player.ReleaseHoldableItem().ItemReference);
     }
 
     private new void OnTriggerEnter(Collider other)
@@ -109,4 +127,9 @@ public class ItemStand : InteractableBehaviour
         base.OnTriggerExit(other);
         PopupManager.Instance.HidePopup();
     }
+
+    
+
+    
+
 }
