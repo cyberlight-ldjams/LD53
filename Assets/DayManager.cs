@@ -41,7 +41,7 @@ public class DayManager : MonoBehaviour
 
     public TextMeshProUGUI nextDayText;
 
-    public GameObject player;
+    private List<PlayerInput> Players;
 
     private string scoreSymbol;
 
@@ -58,6 +58,7 @@ public class DayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RecalculatePlayers();
         scoreSymbol = scoreText.text;
         timeRemaining = TimePerDay;
         SetTimer();
@@ -72,6 +73,16 @@ public class DayManager : MonoBehaviour
         {
             Debug.Log("Note: Skipping intro text.");
             Begin();
+        }
+    }
+
+    public void RecalculatePlayers()
+    {
+        GameObject [] gos =  GameObject.FindGameObjectsWithTag("Player");
+        Players = new List<PlayerInput>();
+        foreach (GameObject go in gos)
+        {
+            Players.Add(go.GetComponent<PlayerInput>()); 
         }
     }
 
@@ -228,15 +239,20 @@ public class DayManager : MonoBehaviour
     public void Pause()
     {
         working = false;
-        player.GetComponent<PlayerMovement>().enabled = false;
-        player.GetComponent<PlayerInput>().enabled = false;
+
+        foreach(PlayerInput player in Players)
+        {
+            player.DeactivateInput();
+        }
     }
 
     public void Unpause()
     {
         working = true;
-        player.GetComponent<PlayerMovement>().enabled = true;
-        player.GetComponent<PlayerInput>().enabled = true;
+        foreach (PlayerInput player in Players)
+        {
+            player.ActivateInput();
+        }
     }
 
     public void Begin()
