@@ -203,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnPrimaryAction(InputValue input)
     {
-        if(currentInteractable.PrimaryActionAllowed(this))
+        if(currentInteractable != null && currentInteractable.PrimaryActionAllowed(this))
         {
             currentInteractable.PrimaryAction(this);
         }
@@ -211,7 +211,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnSecondaryAction(InputValue input)
     {
-        if(currentInteractable.SecondaryActionAllowed(this))
+        if(currentInteractable != null && currentInteractable.SecondaryActionAllowed(this))
         {
             currentInteractable.SecondaryAction(this);
 

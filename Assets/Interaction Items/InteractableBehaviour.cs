@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,12 @@ using UnityEngine.InputSystem;
 public abstract class InteractableBehaviour : MonoBehaviour
 {
     private Canvas canvas;
+
+
+    [Header("Interaction Canvas Elements")]
+    [SerializeField]
+    TextMeshProUGUI primaryPrompt, primaryText, secondaryPrompt, secondaryText;
+
 
     private void Awake()
     {
