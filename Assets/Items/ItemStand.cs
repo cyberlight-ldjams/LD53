@@ -86,11 +86,15 @@ public class ItemStand : InteractableBehaviour
             PlayerAnimation pa = player.gameObject.GetComponent<PlayerAnimation>();
             pa.hold = true;
             pa.pickUp = true;
+
+            Debug.Log("Primary Action Fired.");
         }
     }
 
     public override void SecondaryAction(PlayerMovement player)
     {
+        Debug.Log("Secondary Action Fired.");
+
         // Do nothing
     }
 
