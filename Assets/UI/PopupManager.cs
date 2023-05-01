@@ -12,8 +12,8 @@ public class PopupManager : MonoBehaviour
     public static PopupManager Instance { get; private set; }
 
     [SerializeField]
-    [Range(0f, 2f)]
-    private float fadeTime = 1.0f;
+    [Range(0f, 5f)]
+    private float fadeSpeed = 1.0f;
 
     [SerializeField]
     private TextMeshProUGUI title, description, value;
@@ -67,7 +67,7 @@ public class PopupManager : MonoBehaviour
     {
         if(Mathf.Clamp01(popup.alpha) != Mathf.Clamp01(desiredAlpha))
         {
-            popup.alpha = Mathf.Lerp(popup.alpha, desiredAlpha, Time.deltaTime * fadeTime);
+            popup.alpha = Mathf.Lerp(popup.alpha, desiredAlpha, Time.deltaTime * fadeSpeed);
         }
     }
 }

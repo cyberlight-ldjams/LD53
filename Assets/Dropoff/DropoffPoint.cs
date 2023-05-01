@@ -7,6 +7,13 @@ public class DropoffPoint : InteractableBehaviour
 {
     public DayManager dm;
 
+    public GameObject canvasCover;
+
+    void Start()
+    {
+        canvasCover.SetActive(false);
+    }
+
     public Order CompleteOrder(Box box)
     {
         foreach (Order o in dm.orderList)
