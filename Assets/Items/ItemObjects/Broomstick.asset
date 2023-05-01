@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Broomstick
   description: Ye Olde Cumulus 5000
   model: {fileID: 8648129165191358507, guid: ecda2eff55d2c964fb4dd773221faa3e, type: 3}
-  value: 13
+  value: 19
   Icon: {fileID: 2800000, guid: 3d2115b2ccfff8447b72dc87193e434e, type: 3}
   scaleCorrection: {x: 1, y: 1, z: 1}
