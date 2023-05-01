@@ -25,8 +25,8 @@ public class BoxingStation : InteractableBehaviour
     {
         GameObject go = Instantiate(this.boxItem.model, Vector3.zero,
                 Quaternion.identity, this.gameObject.transform);
-        go.transform.localPosition = new Vector3(0, 0.67f, 0);
-        go.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        go.transform.localPosition = new Vector3(0, 0.77f, 0);
+        go.transform.Rotate(new Vector3(0, 90f, 0));
         boxModel = go;
         boxModel.SetActive(false);
     }
