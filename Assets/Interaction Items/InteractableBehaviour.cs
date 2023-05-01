@@ -31,14 +31,32 @@ public abstract class InteractableBehaviour : MonoBehaviour
         //
     }
 
-    protected void OnTriggerEnter(Collider other)
+    private void FindPlayer(Collider other)
     {
-
         if (other.CompareTag("Player"))
         {
             ShowInteractions();
             other.gameObject.GetComponent<PlayerMovement>().SetCurrentInteractable(this);
-        } else
+        }
+        else
+        {
+            Debug.Log(other.name);
+        }
+    }
+
+    protected void OnTriggerEnter(Collider other)
+    {
+        FindPlayer(other);
+    }
+
+    protected void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            ShowInteractions();
+            other.gameObject.GetComponent<PlayerMovement>().SetCurrentInteractable(this);
+        }
+        else
         {
             Debug.Log(other.name);
         }
