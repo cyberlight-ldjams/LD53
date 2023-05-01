@@ -808,7 +808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585263, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: positionCorrection.y
-      value: -1.01
+      value: -0.95
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585263, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: positionCorrection.z
@@ -2116,7 +2116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7266914067980530677, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
       propertyPath: fadeSpeed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7266914068009557370, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
       propertyPath: m_AnchorMax.y
