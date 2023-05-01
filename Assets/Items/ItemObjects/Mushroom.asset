@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ca150548419f14c8df0105be03e52a, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
-  itemName: Mushroom
-  description: Probably definitely poisonous
+  itemName: Magic Mushroom
+  description: No, not THAT kind of magic mushroom...
   model: {fileID: 1078078549293392145, guid: f857fc6e342fab44988d4eea78f69e0e, type: 3}
   value: 11
   Icon: {fileID: 2800000, guid: a157eba5dcca11d4a931019973ee2ecb, type: 3}

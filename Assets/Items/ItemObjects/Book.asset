@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ca150548419f14c8df0105be03e52a, type: 3}
   m_Name: Book
   m_EditorClassIdentifier: 
-  itemName: Book
-  description: A book of arcane magic, magium arcanium, if you will
+  itemName: Ancient Tome
+  description: Ancient spells, secret knowledge, and family recipes
   model: {fileID: 7122923969121098365, guid: ce2cf443c10f6cc4c8baaa17e0f50fc4, type: 3}
   value: 101
   Icon: {fileID: 2800000, guid: 42b0d706d29ef624f8ca9d252edfe6e3, type: 3}
