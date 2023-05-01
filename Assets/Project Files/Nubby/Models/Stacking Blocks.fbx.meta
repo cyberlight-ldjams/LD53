@@ -3,7 +3,12 @@ guid: bd05e1afa0712084995a9ce1886ed569
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone Block (Baked)
+    second: {fileID: 2100000, guid: 705f7253bd248ba4a8d65e0b341aa2d4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
