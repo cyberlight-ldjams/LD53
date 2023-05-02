@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CapsuleCollider))]
 public class PlayerMovement : MonoBehaviour
 {
+    public DayManager dm;
 
     [Range(0f, 0.99f)]
     [SerializeField]
@@ -228,7 +229,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnPause(InputValue input)
     {
-        Debug.Log("Pause");
-        DayManager.Quit();
+        dm.PauseMenu();
     }
 }
