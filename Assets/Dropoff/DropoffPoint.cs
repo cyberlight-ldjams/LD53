@@ -60,6 +60,6 @@ public class DropoffPoint : InteractableBehaviour
 
     public override bool PrimaryActionAllowed(PlayerMovement player)
     {
-        throw new System.NotImplementedException();
+        return false;
     }
 }

@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput controls;
     private InputAction primary, secondary;
 
+    [SerializeField]
     private InteractableBehaviour currentInteractable = null;
 
     public Item boxItem;
