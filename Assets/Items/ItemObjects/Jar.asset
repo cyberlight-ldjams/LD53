@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Jar
   description: A jar containing something magical, maybe
   model: {fileID: 8938078660484955816, guid: e19022c9f4754024fbe16f30af177a33, type: 3}
-  value: 43
+  value: 21
   Icon: {fileID: 2800000, guid: a99cd0c1ba929fb4a8ac5d8fdb80189d, type: 3}
   scaleCorrection: {x: 1, y: 1, z: 1}

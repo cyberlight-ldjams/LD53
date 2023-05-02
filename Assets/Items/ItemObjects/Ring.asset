@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Ring
   description: Will you be my purchaser?
   model: {fileID: 6711962348658514099, guid: e5061a7c451bb8a4b97a8029b7721ad8, type: 3}
-  value: 29
+  value: 49
   Icon: {fileID: 2800000, guid: 3da130d6fb14f0a46a019fcb7d45577f, type: 3}
   scaleCorrection: {x: 1, y: 1, z: 1}
