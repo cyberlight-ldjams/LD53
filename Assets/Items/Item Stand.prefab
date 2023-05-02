@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d45edb0b2f276a46a8baf313c88a8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 8414346585790562765, guid: 9d73add24557c5d408059dc3989f5059, type: 3}
   itemOnStand: {fileID: 0}
   item: {fileID: 0}
   poofer: {fileID: 2767868993946894289}

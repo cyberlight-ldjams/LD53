@@ -5,42 +5,49 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Collider), typeof(Canvas))]
+[RequireComponent(typeof(Collider))]
 public abstract class InteractableBehaviour : MonoBehaviour
 {
-    private Canvas canvas;
-
-
-    [Header("Interaction Canvas Elements")]
+    UIPrompts prompter;
     [SerializeField]
-    TextMeshProUGUI primaryPrompt, primaryText, secondaryPrompt, secondaryText;
+    private GameObject canvasPrefab;
 
 
-    private void Awake()
+    public void ShowInteractions(PlayerMovement pm)
     {
-        canvas = GetComponent<Canvas>();
-    }
 
-    public void ShowInteractions()
-    {
-        //
+        if(prompter == null)
+        {
+            GameObject canvas = Instantiate(canvasPrefab, transform);
+            canvas.transform.Translate(Vector3.up, Space.Self);
+            prompter = canvas.GetComponentInChildren<UIPrompts>();
+        }
+
+        if(PrimaryActionAllowed(pm))
+        {
+            prompter.TogglePrompt(UIPrompts.Prompt.PRIMARY, true);
+        }
+
+        if (SecondaryActionAllowed(pm))
+        {
+            prompter.TogglePrompt(UIPrompts.Prompt.SECONDARY, true);
+        }
     }
 
     public void HideInteractions()
     {
-        //
+        prompter.TogglePrompt(UIPrompts.Prompt.PRIMARY, false);
+        prompter.TogglePrompt(UIPrompts.Prompt.SECONDARY, false);
     }
 
     private void FindPlayer(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            ShowInteractions();
-            other.gameObject.GetComponent<PlayerMovement>().SetCurrentInteractable(this);
-        }
-        else
-        {
-            Debug.Log(other.name);
+            PlayerMovement pm = other.gameObject.GetComponent<PlayerMovement>();
+
+            ShowInteractions(pm);
+            pm.SetCurrentInteractable(this);
         }
     }
 
@@ -51,15 +58,7 @@ public abstract class InteractableBehaviour : MonoBehaviour
 
     protected void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            ShowInteractions();
-            other.gameObject.GetComponent<PlayerMovement>().SetCurrentInteractable(this);
-        }
-        else
-        {
-            Debug.Log(other.name);
-        }
+        FindPlayer(other);
     }
 
     protected void OnTriggerExit(Collider other)

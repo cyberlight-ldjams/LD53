@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719f3419b5e11cd4bb15de0cda47a708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 8414346585790562765, guid: 9d73add24557c5d408059dc3989f5059, type: 3}
   dm: {fileID: 0}
   itemsAtStation: []
   automagic: 1

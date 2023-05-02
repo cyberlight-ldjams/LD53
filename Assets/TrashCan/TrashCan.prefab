@@ -4860,6 +4860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c047a93c650c08e4884fff50511f09b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 8414346585790562765, guid: 9d73add24557c5d408059dc3989f5059, type: 3}
 --- !u!65 &823990487
 BoxCollider:
   m_ObjectHideFlags: 0

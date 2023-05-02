@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f908f14c18fc044d856436e0341fb76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 8414346585790562765, guid: 9d73add24557c5d408059dc3989f5059, type: 3}
   dm: {fileID: 0}
   canvasCover: {fileID: 162235274158921640}
 --- !u!65 &7675059351240151440

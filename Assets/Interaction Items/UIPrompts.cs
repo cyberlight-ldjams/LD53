@@ -41,30 +41,30 @@ public class UIPrompts : MonoBehaviour
         }
     }
 
-    public void SetPrompt(Prompt p, string key, string text)
+    public void SetPrompt(Prompt p, string key)
     {
         if(p == Prompt.PRIMARY)
         {
             primaryKey.text = key;
-            primaryPrompt.text = text;
+            //primaryPrompt.text = text;
             primaryAlpha = 1f;
         } else
         {
             secondaryKey.text = key;
-            secondaryPrompt.text = text;
+            //secondaryPrompt.text = text;
             secondaryAlpha = 1f;
         }
 
     }
 
-    public void ClearPrompt(Prompt p)
+    public void TogglePrompt(Prompt p, bool active)
     {
         if(p == Prompt.PRIMARY)
         {
-            primaryAlpha = 0f;
+            primaryAlpha = (active) ? 1f : 0f; ;
         } else
         {
-            secondaryAlpha = 0f;
+            secondaryAlpha = (active) ? 1f : 0f; ;
         }
     }
 
