@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6663728083346454346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6663728083346454344}
+  - component: {fileID: 6663728083346454345}
+  m_Layer: 0
+  m_Name: DayManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6663728083346454344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663728083346454346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.957668, y: -42.77207, z: 55.455986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6663728083346454345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663728083346454346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28412e68d9558eb4f8f4f6c6bba5f1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimePerDay: 120
+  possibleItems:
+  - {fileID: 11400000, guid: 5307359f665b76c48927aec8e88b2082, type: 2}
+  - {fileID: 11400000, guid: 7acde452eb04e6246af07a9b58205bf6, type: 2}
+  - {fileID: 11400000, guid: e7b168a9327ced642bbb5176242798e3, type: 2}
+  - {fileID: 11400000, guid: 1e7a57abfebcf2242858c62d65f8d0ee, type: 2}
+  - {fileID: 11400000, guid: a7ab0ec55011e5e4fa0592bb66691b96, type: 2}
+  - {fileID: 11400000, guid: 8e5dfaa8ec1c6f4439ad69bae6a3b70d, type: 2}
+  - {fileID: 11400000, guid: d1a2d7c20a419cc4c953fffe44f1d601, type: 2}
+  - {fileID: 11400000, guid: 2cccc1c2d7b71d14aa6ce3c6313dda39, type: 2}
+  - {fileID: 11400000, guid: 6af3ec521847b294aaa4f3e44284468c, type: 2}
+  - {fileID: 11400000, guid: 23dec866d50d03c4c8736f846faeee5f, type: 2}
+  - {fileID: 11400000, guid: 90cc4012f75b49544b14b777f957cb97, type: 2}
+  - {fileID: 11400000, guid: 25f1234c0da71614584819aa1ab6116c, type: 2}
+  - {fileID: 11400000, guid: fc63e72246c4b454e9d087b98516f183, type: 2}
+  - {fileID: 11400000, guid: 41ab16086c7cae140b9def8a709180c6, type: 2}
+  - {fileID: 11400000, guid: fc63e72246c4b454e9d087b98516f183, type: 2}
+  - {fileID: 11400000, guid: fc63e72246c4b454e9d087b98516f183, type: 2}
+  - {fileID: 11400000, guid: fc63e72246c4b454e9d087b98516f183, type: 2}
+  - {fileID: 11400000, guid: 5307359f665b76c48927aec8e88b2082, type: 2}
+  - {fileID: 11400000, guid: 5307359f665b76c48927aec8e88b2082, type: 2}
+  - {fileID: 11400000, guid: 2cccc1c2d7b71d14aa6ce3c6313dda39, type: 2}
+  - {fileID: 11400000, guid: 2cccc1c2d7b71d14aa6ce3c6313dda39, type: 2}
+  - {fileID: 11400000, guid: a7ab0ec55011e5e4fa0592bb66691b96, type: 2}
+  - {fileID: 11400000, guid: 7acde452eb04e6246af07a9b58205bf6, type: 2}
+  - {fileID: 11400000, guid: 7acde452eb04e6246af07a9b58205bf6, type: 2}
+  - {fileID: 11400000, guid: 7acde452eb04e6246af07a9b58205bf6, type: 2}
+  - {fileID: 11400000, guid: 90cc4012f75b49544b14b777f957cb97, type: 2}
+  - {fileID: 11400000, guid: 90cc4012f75b49544b14b777f957cb97, type: 2}
+  - {fileID: 11400000, guid: 1e7a57abfebcf2242858c62d65f8d0ee, type: 2}
+  - {fileID: 11400000, guid: 1e7a57abfebcf2242858c62d65f8d0ee, type: 2}
+  - {fileID: 11400000, guid: 1e7a57abfebcf2242858c62d65f8d0ee, type: 2}
+  - {fileID: 11400000, guid: d1a2d7c20a419cc4c953fffe44f1d601, type: 2}
+  - {fileID: 11400000, guid: d1a2d7c20a419cc4c953fffe44f1d601, type: 2}
+  - {fileID: 11400000, guid: d1a2d7c20a419cc4c953fffe44f1d601, type: 2}
+  - {fileID: 11400000, guid: 8e5dfaa8ec1c6f4439ad69bae6a3b70d, type: 2}
+  - {fileID: 11400000, guid: 25f1234c0da71614584819aa1ab6116c, type: 2}
+  - {fileID: 11400000, guid: 25f1234c0da71614584819aa1ab6116c, type: 2}
+  - {fileID: 11400000, guid: 25f1234c0da71614584819aa1ab6116c, type: 2}
+  - {fileID: 11400000, guid: e7b168a9327ced642bbb5176242798e3, type: 2}
+  - {fileID: 11400000, guid: e7b168a9327ced642bbb5176242798e3, type: 2}
+  - {fileID: 11400000, guid: e7b168a9327ced642bbb5176242798e3, type: 2}
+  minOrderSize: 1
+  maxOrderSize: 1
+  addToOrderSizePerDay: 1
+  maxOrderSizeEver: 5
+  numberOfOrdersToday: 3
+  addOrdersPerDay: 1
+  orderListUI: {fileID: 0}
+  scoreText: {fileID: 0}
+  timer: {fileID: 0}
+  youLose: {fileID: 0}
+  youWin: {fileID: 0}
+  opening: {fileID: 0}
+  nextDayDialogue: {fileID: 0}
+  nextDayText: {fileID: 0}
+  Score: 0
+  ScoreToWin: 500
+  pauseMenu: {fileID: 0}
+  deathMenu: {fileID: 0}
+  winMenu: {fileID: 0}

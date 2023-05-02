@@ -51,6 +51,12 @@ public class DayManager : MonoBehaviour
 
     private float timeRemaining;
 
+    public GameObject pauseMenu;
+
+    public GameObject deathMenu;
+
+    public GameObject winMenu;
+
     // Whether or not the player is working
     // Or if we're between days
     private bool working;
@@ -227,13 +233,13 @@ public class DayManager : MonoBehaviour
     public void YouWin()
     {
         Pause();
-        youWin.gameObject.SetActive(true);
+        winMenu.SetActive(true);
     }
 
     public void GameOver()
     {
         Pause();
-        youLose.gameObject.SetActive(true);
+        deathMenu.SetActive(true);
     }
 
     public void Pause()
@@ -244,6 +250,18 @@ public class DayManager : MonoBehaviour
         {
             player.DeactivateInput();
         }
+    }
+
+    public void PauseMenu()
+    {
+        Pause();
+        pauseMenu.SetActive(true);
+    }
+
+    public void UnpauseMenu()
+    {
+        Unpause();
+        pauseMenu.SetActive(false);
     }
 
     public void Unpause()
@@ -266,5 +284,22 @@ public class DayManager : MonoBehaviour
         nextDayDialogue.SetActive(false);
         Unpause();
         StartNewDay();
+    }
+
+    public void RestartGame()
+    {
+        Debug.Log("Restart!");
+        maxOrderSize = minOrderSize;
+        numberOfOrdersToday = 3;
+        Score = 0;
+        Unpause();
+        StartNewDay();
+        deathMenu.SetActive(false);
+        winMenu.SetActive(false);
+    }
+
+    public static void Quit()
+    {
+        Application.Quit();
     }
 }
