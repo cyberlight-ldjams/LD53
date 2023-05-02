@@ -1515,6 +1515,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 145044090}
+    - target: {fileID: 5537542496369636787, guid: 1f9bd5528fbd56147ab59a5c253b3d6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 162747705}
+    - target: {fileID: 5537542496369636787, guid: 1f9bd5528fbd56147ab59a5c253b3d6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200133860251295265, guid: 1f9bd5528fbd56147ab59a5c253b3d6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 162747705}
+    - target: {fileID: 6200133860251295265, guid: 1f9bd5528fbd56147ab59a5c253b3d6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f9bd5528fbd56147ab59a5c253b3d6a, type: 3}
 --- !u!1 &602073824 stripped
@@ -1540,10 +1556,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3126562869159822760, guid: b73ce5038d8cbca4f9e06285aec42bec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 162747705}
+    - target: {fileID: 3126562869159822760, guid: b73ce5038d8cbca4f9e06285aec42bec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
     - target: {fileID: 3249035869044730072, guid: b73ce5038d8cbca4f9e06285aec42bec, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 145044090}
+    - target: {fileID: 3580864419424972346, guid: b73ce5038d8cbca4f9e06285aec42bec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 162747705}
+    - target: {fileID: 3580864419424972346, guid: b73ce5038d8cbca4f9e06285aec42bec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
     - target: {fileID: 6342742572604877535, guid: b73ce5038d8cbca4f9e06285aec42bec, type: 3}
       propertyPath: m_Name
       value: Start
@@ -4161,6 +4193,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 145044090}
+    - target: {fileID: 7422345904285071968, guid: bea3b58923444a84fb80bdec8d2d4ce4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 162747705}
+    - target: {fileID: 7422345904285071968, guid: bea3b58923444a84fb80bdec8d2d4ce4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066723707068027378, guid: bea3b58923444a84fb80bdec8d2d4ce4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 162747705}
+    - target: {fileID: 9066723707068027378, guid: bea3b58923444a84fb80bdec8d2d4ce4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bea3b58923444a84fb80bdec8d2d4ce4, type: 3}
 --- !u!1 &2055727055 stripped
