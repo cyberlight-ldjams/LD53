@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585251, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.43
+      value: -12.13
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585251, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -755,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585251, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.96
+      value: 15.07
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585251, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -763,7 +763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585251, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.03
+      value: -18.55
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585251, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1042,7 +1042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585251, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.27
+      value: 22.01
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585251, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1672,7 +1672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585251, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.24
+      value: -17.04
       objectReference: {fileID: 0}
     - target: {fileID: 2767868992348585251, guid: 2304f24db7cdd714a9cbbbce88a9afb1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2263,7 +2263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 133622864814506037, guid: c524833ffe929f74da2911f8993c3ae1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.9
+      value: -8.46
       objectReference: {fileID: 0}
     - target: {fileID: 133622864814506037, guid: c524833ffe929f74da2911f8993c3ae1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3172,6 +3172,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Begin
       objectReference: {fileID: 0}
+    - target: {fileID: 7266914067800951111, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 37
+      objectReference: {fileID: 0}
     - target: {fileID: 7266914067803806199, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3319,6 +3323,14 @@ PrefabInstance:
     - target: {fileID: 7266914068111680884, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266914068227287657, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266914068227287657, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 7266914068227287658, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
       propertyPath: m_IsActive
@@ -3503,6 +3515,35 @@ PrefabInstance:
     - target: {fileID: 7266914068546515575, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266914068680045914, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
+      propertyPath: m_text
+      value: "\tWelcome, young wizard. I am Merlin the Great! I'm impressed with
+        your mastery of the levitation spell and am proud to welcome you to my apprenticeship
+        program! You will learn much from me if you put in enough work--in my warehouse!\r\n\t...What?
+        I don't get many students these days, so I have a side business. For those
+        learned in magical arts, this is their one-stop-shop for all sorts of mystical
+        curios!\r\nCheck the daily orders with the Tab kay and find the items in
+        the warehouse. Press E or Space to levitate the items and bring them to the
+        boxing station. Once boxed, load completed orders into the wagon.\r\n\tOnce
+        you've earned 500\u20B3, we can being the rest of your training... What?
+        Just because you're my apprentice doesn't make these magic lessons free.\r\n\t...Scam?
+        What scam? You just have to work for me so that you can pay me to teach you
+        magic, then once you know enough magic, you can pay me again to buy magic
+        things... Yes, this is a legitimate apprenticeship.\r\n\tNo more questions!
+        Get to work!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266914068680045914, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
+      propertyPath: m_margin.x
+      value: -366.6147
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266914068680045914, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
+      propertyPath: m_margin.y
+      value: -238.99965
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266914068680045914, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
+      propertyPath: m_margin.z
+      value: -387.1508
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd03e6728ea03dc4395f5b6d4c3c64af, type: 3}
