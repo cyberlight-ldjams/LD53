@@ -225,4 +225,10 @@ public class PlayerMovement : MonoBehaviour
             orderList.SetActive(!orderList.activeSelf);
         }
     }
+
+    private void OnPause(InputValue input)
+    {
+        Debug.Log("Pause");
+        DayManager.Quit();
+    }
 }

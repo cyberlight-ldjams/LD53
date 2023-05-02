@@ -62,6 +62,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""355fbd61-5269-4edd-890b-759728a50c52"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -251,6 +260,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleOrders"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd1a835c-2568-4913-882b-08f93ee49a07"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae520da5-ee18-4f6a-862e-88ecb08e086a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -280,6 +311,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_PrimaryAction = m_Player.FindAction("PrimaryAction", throwIfNotFound: true);
         m_Player_SecondaryAction = m_Player.FindAction("SecondaryAction", throwIfNotFound: true);
         m_Player_ToggleOrders = m_Player.FindAction("ToggleOrders", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -345,6 +377,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PrimaryAction;
     private readonly InputAction m_Player_SecondaryAction;
     private readonly InputAction m_Player_ToggleOrders;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -353,6 +386,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @PrimaryAction => m_Wrapper.m_Player_PrimaryAction;
         public InputAction @SecondaryAction => m_Wrapper.m_Player_SecondaryAction;
         public InputAction @ToggleOrders => m_Wrapper.m_Player_ToggleOrders;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -374,6 +408,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ToggleOrders.started += instance.OnToggleOrders;
             @ToggleOrders.performed += instance.OnToggleOrders;
             @ToggleOrders.canceled += instance.OnToggleOrders;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -390,6 +427,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ToggleOrders.started -= instance.OnToggleOrders;
             @ToggleOrders.performed -= instance.OnToggleOrders;
             @ToggleOrders.canceled -= instance.OnToggleOrders;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -422,5 +462,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnPrimaryAction(InputAction.CallbackContext context);
         void OnSecondaryAction(InputAction.CallbackContext context);
         void OnToggleOrders(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
